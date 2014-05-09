@@ -23,4 +23,4 @@ To use this view controller simply load it up from AppDelegate:
 }
 ```
 ##Example
-![Screen1](https://drive.google.com/file/d/0B48ZO4yqLHXbb1dBX1Q2b1pDY1k/edit?usp=sharing)
+![Screen1](https://raw.githubusercontent.com/MaximAlien/Smile-Detector-CameraViewController/master/resources/example2.png)
