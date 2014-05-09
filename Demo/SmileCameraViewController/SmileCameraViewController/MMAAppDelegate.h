@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmileCameraViewController.h"
 
 @interface MMAAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) SmileCameraViewController *smileCameraViewController;
 
 @end

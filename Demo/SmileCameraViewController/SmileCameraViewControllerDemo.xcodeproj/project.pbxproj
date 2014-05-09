@@ -13,14 +13,13 @@
 		6D028DAE19197BFF00A8E057 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D028DAC19197BFF00A8E057 /* InfoPlist.strings */; };
 		6D028DB019197BFF00A8E057 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028DAF19197BFF00A8E057 /* main.m */; };
 		6D028DB419197BFF00A8E057 /* MMAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028DB319197BFF00A8E057 /* MMAAppDelegate.m */; };
-		6D028DB719197BFF00A8E057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D028DB519197BFF00A8E057 /* Main.storyboard */; };
-		6D028DBA19197BFF00A8E057 /* MMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028DB919197BFF00A8E057 /* MMAViewController.m */; };
 		6D028DBC19197BFF00A8E057 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D028DBB19197BFF00A8E057 /* Images.xcassets */; };
 		6D028DC319197BFF00A8E057 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D028DC219197BFF00A8E057 /* XCTest.framework */; };
 		6D028DC419197BFF00A8E057 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D028DA319197BFF00A8E057 /* Foundation.framework */; };
 		6D028DC519197BFF00A8E057 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D028DA719197BFF00A8E057 /* UIKit.framework */; };
-		6D028DCD19197BFF00A8E057 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D028DCB19197BFF00A8E057 /* InfoPlist.strings */; };
-		6D028DCF19197BFF00A8E057 /* SmileCameraViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028DCE19197BFF00A8E057 /* SmileCameraViewControllerTests.m */; };
+		6D028DD919197D9A00A8E057 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D028DD819197D9A00A8E057 /* AVFoundation.framework */; };
+		6D9B3D6F191D1B1A00172DBC /* SmileCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3D6D191D1B1A00172DBC /* SmileCameraViewController.m */; };
+		6D9B3D70191D1B1A00172DBC /* SmileCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D9B3D6E191D1B1A00172DBC /* SmileCameraViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,25 +33,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6D028DA019197BFF00A8E057 /* SmileCameraViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileCameraViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D028DA019197BFF00A8E057 /* SmileCameraViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileCameraViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D028DA319197BFF00A8E057 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6D028DA519197BFF00A8E057 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6D028DA719197BFF00A8E057 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6D028DAB19197BFF00A8E057 /* SmileCameraViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmileCameraViewController-Info.plist"; sourceTree = "<group>"; };
+		6D028DAB19197BFF00A8E057 /* SmileCameraViewControllerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmileCameraViewControllerDemo-Info.plist"; sourceTree = "<group>"; };
 		6D028DAD19197BFF00A8E057 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6D028DAF19197BFF00A8E057 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D028DB119197BFF00A8E057 /* SmileCameraViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmileCameraViewController-Prefix.pch"; sourceTree = "<group>"; };
+		6D028DB119197BFF00A8E057 /* SmileCameraViewControllerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmileCameraViewControllerDemo-Prefix.pch"; sourceTree = "<group>"; };
 		6D028DB219197BFF00A8E057 /* MMAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAAppDelegate.h; sourceTree = "<group>"; };
 		6D028DB319197BFF00A8E057 /* MMAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAAppDelegate.m; sourceTree = "<group>"; };
-		6D028DB619197BFF00A8E057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6D028DB819197BFF00A8E057 /* MMAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAViewController.h; sourceTree = "<group>"; };
-		6D028DB919197BFF00A8E057 /* MMAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAViewController.m; sourceTree = "<group>"; };
 		6D028DBB19197BFF00A8E057 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6D028DC119197BFF00A8E057 /* SmileCameraViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmileCameraViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D028DC119197BFF00A8E057 /* SmileCameraViewControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmileCameraViewControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D028DC219197BFF00A8E057 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6D028DCA19197BFF00A8E057 /* SmileCameraViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmileCameraViewControllerTests-Info.plist"; sourceTree = "<group>"; };
-		6D028DCC19197BFF00A8E057 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6D028DCE19197BFF00A8E057 /* SmileCameraViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmileCameraViewControllerTests.m; sourceTree = "<group>"; };
+		6D028DD819197D9A00A8E057 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6D9B3D6C191D1B1A00172DBC /* SmileCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmileCameraViewController.h; path = SmileCameraViewController/SmileCameraViewController/SmileCameraViewController.h; sourceTree = "<group>"; };
+		6D9B3D6D191D1B1A00172DBC /* SmileCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmileCameraViewController.m; path = SmileCameraViewController/SmileCameraViewController/SmileCameraViewController.m; sourceTree = "<group>"; };
+		6D9B3D6E191D1B1A00172DBC /* SmileCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmileCameraViewController.xib; path = SmileCameraViewController/SmileCameraViewController/SmileCameraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D028DD919197D9A00A8E057 /* AVFoundation.framework in Frameworks */,
 				6D028DA619197BFF00A8E057 /* CoreGraphics.framework in Frameworks */,
 				6D028DA819197BFF00A8E057 /* UIKit.framework in Frameworks */,
 				6D028DA419197BFF00A8E057 /* Foundation.framework in Frameworks */,
@@ -82,8 +80,8 @@
 		6D028D9719197BFF00A8E057 = {
 			isa = PBXGroup;
 			children = (
-				6D028DA919197BFF00A8E057 /* SmileCameraViewController */,
-				6D028DC819197BFF00A8E057 /* SmileCameraViewControllerTests */,
+				6D028DDA19197E3C00A8E057 /* SmileCameraViewController */,
+				6D028DA919197BFF00A8E057 /* SmileCameraViewControllerDemo */,
 				6D028DA219197BFF00A8E057 /* Frameworks */,
 				6D028DA119197BFF00A8E057 /* Products */,
 			);
@@ -92,8 +90,8 @@
 		6D028DA119197BFF00A8E057 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6D028DA019197BFF00A8E057 /* SmileCameraViewController.app */,
-				6D028DC119197BFF00A8E057 /* SmileCameraViewControllerTests.xctest */,
+				6D028DA019197BFF00A8E057 /* SmileCameraViewControllerDemo.app */,
+				6D028DC119197BFF00A8E057 /* SmileCameraViewControllerDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +99,7 @@
 		6D028DA219197BFF00A8E057 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D028DD819197D9A00A8E057 /* AVFoundation.framework */,
 				6D028DA319197BFF00A8E057 /* Foundation.framework */,
 				6D028DA519197BFF00A8E057 /* CoreGraphics.framework */,
 				6D028DA719197BFF00A8E057 /* UIKit.framework */,
@@ -109,55 +108,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6D028DA919197BFF00A8E057 /* SmileCameraViewController */ = {
+		6D028DA919197BFF00A8E057 /* SmileCameraViewControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
 				6D028DB219197BFF00A8E057 /* MMAAppDelegate.h */,
 				6D028DB319197BFF00A8E057 /* MMAAppDelegate.m */,
-				6D028DB519197BFF00A8E057 /* Main.storyboard */,
-				6D028DB819197BFF00A8E057 /* MMAViewController.h */,
-				6D028DB919197BFF00A8E057 /* MMAViewController.m */,
 				6D028DBB19197BFF00A8E057 /* Images.xcassets */,
 				6D028DAA19197BFF00A8E057 /* Supporting Files */,
 			);
+			name = SmileCameraViewControllerDemo;
 			path = SmileCameraViewController;
 			sourceTree = "<group>";
 		};
 		6D028DAA19197BFF00A8E057 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6D028DAB19197BFF00A8E057 /* SmileCameraViewController-Info.plist */,
+				6D028DAB19197BFF00A8E057 /* SmileCameraViewControllerDemo-Info.plist */,
 				6D028DAC19197BFF00A8E057 /* InfoPlist.strings */,
 				6D028DAF19197BFF00A8E057 /* main.m */,
-				6D028DB119197BFF00A8E057 /* SmileCameraViewController-Prefix.pch */,
+				6D028DB119197BFF00A8E057 /* SmileCameraViewControllerDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6D028DC819197BFF00A8E057 /* SmileCameraViewControllerTests */ = {
+		6D028DDA19197E3C00A8E057 /* SmileCameraViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6D028DCE19197BFF00A8E057 /* SmileCameraViewControllerTests.m */,
-				6D028DC919197BFF00A8E057 /* Supporting Files */,
+				6D9B3D6C191D1B1A00172DBC /* SmileCameraViewController.h */,
+				6D9B3D6D191D1B1A00172DBC /* SmileCameraViewController.m */,
+				6D9B3D6E191D1B1A00172DBC /* SmileCameraViewController.xib */,
 			);
-			path = SmileCameraViewControllerTests;
-			sourceTree = "<group>";
-		};
-		6D028DC919197BFF00A8E057 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6D028DCA19197BFF00A8E057 /* SmileCameraViewControllerTests-Info.plist */,
-				6D028DCB19197BFF00A8E057 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = SmileCameraViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6D028D9F19197BFF00A8E057 /* SmileCameraViewController */ = {
+		6D028D9F19197BFF00A8E057 /* SmileCameraViewControllerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D028DD219197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewController" */;
+			buildConfigurationList = 6D028DD219197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewControllerDemo" */;
 			buildPhases = (
 				6D028D9C19197BFF00A8E057 /* Sources */,
 				6D028D9D19197BFF00A8E057 /* Frameworks */,
@@ -167,14 +156,14 @@
 			);
 			dependencies = (
 			);
-			name = SmileCameraViewController;
+			name = SmileCameraViewControllerDemo;
 			productName = SmileCameraViewController;
-			productReference = 6D028DA019197BFF00A8E057 /* SmileCameraViewController.app */;
+			productReference = 6D028DA019197BFF00A8E057 /* SmileCameraViewControllerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6D028DC019197BFF00A8E057 /* SmileCameraViewControllerTests */ = {
+		6D028DC019197BFF00A8E057 /* SmileCameraViewControllerDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D028DD519197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewControllerTests" */;
+			buildConfigurationList = 6D028DD519197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewControllerDemoTests" */;
 			buildPhases = (
 				6D028DBD19197BFF00A8E057 /* Sources */,
 				6D028DBE19197BFF00A8E057 /* Frameworks */,
@@ -185,9 +174,9 @@
 			dependencies = (
 				6D028DC719197BFF00A8E057 /* PBXTargetDependency */,
 			);
-			name = SmileCameraViewControllerTests;
+			name = SmileCameraViewControllerDemoTests;
 			productName = SmileCameraViewControllerTests;
-			productReference = 6D028DC119197BFF00A8E057 /* SmileCameraViewControllerTests.xctest */;
+			productReference = 6D028DC119197BFF00A8E057 /* SmileCameraViewControllerDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -205,7 +194,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6D028D9B19197BFF00A8E057 /* Build configuration list for PBXProject "SmileCameraViewController" */;
+			buildConfigurationList = 6D028D9B19197BFF00A8E057 /* Build configuration list for PBXProject "SmileCameraViewControllerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -218,8 +207,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6D028D9F19197BFF00A8E057 /* SmileCameraViewController */,
-				6D028DC019197BFF00A8E057 /* SmileCameraViewControllerTests */,
+				6D028D9F19197BFF00A8E057 /* SmileCameraViewControllerDemo */,
+				6D028DC019197BFF00A8E057 /* SmileCameraViewControllerDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,7 +220,7 @@
 			files = (
 				6D028DBC19197BFF00A8E057 /* Images.xcassets in Resources */,
 				6D028DAE19197BFF00A8E057 /* InfoPlist.strings in Resources */,
-				6D028DB719197BFF00A8E057 /* Main.storyboard in Resources */,
+				6D9B3D70191D1B1A00172DBC /* SmileCameraViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D028DCD19197BFF00A8E057 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D028DBA19197BFF00A8E057 /* MMAViewController.m in Sources */,
+				6D9B3D6F191D1B1A00172DBC /* SmileCameraViewController.m in Sources */,
 				6D028DB419197BFF00A8E057 /* MMAAppDelegate.m in Sources */,
 				6D028DB019197BFF00A8E057 /* main.m in Sources */,
 			);
@@ -260,7 +248,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D028DCF19197BFF00A8E057 /* SmileCameraViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +256,7 @@
 /* Begin PBXTargetDependency section */
 		6D028DC719197BFF00A8E057 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6D028D9F19197BFF00A8E057 /* SmileCameraViewController */;
+			target = 6D028D9F19197BFF00A8E057 /* SmileCameraViewControllerDemo */;
 			targetProxy = 6D028DC619197BFF00A8E057 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -279,22 +266,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				6D028DAD19197BFF00A8E057 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		6D028DB519197BFF00A8E057 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D028DB619197BFF00A8E057 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6D028DCB19197BFF00A8E057 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D028DCC19197BFF00A8E057 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -378,9 +349,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmileCameraViewController/SmileCameraViewController-Prefix.pch";
-				INFOPLIST_FILE = "SmileCameraViewController/SmileCameraViewController-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SmileCameraViewController/SmileCameraViewControllerDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SmileCameraViewController/SmileCameraViewControllerDemo-Info.plist";
+				PRODUCT_NAME = SmileCameraViewControllerDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -391,9 +362,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SmileCameraViewController/SmileCameraViewController-Prefix.pch";
-				INFOPLIST_FILE = "SmileCameraViewController/SmileCameraViewController-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "SmileCameraViewController/SmileCameraViewControllerDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SmileCameraViewController/SmileCameraViewControllerDemo-Info.plist";
+				PRODUCT_NAME = SmileCameraViewControllerDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -414,7 +385,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SmileCameraViewControllerTests/SmileCameraViewControllerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SmileCameraViewControllerDemoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -432,7 +403,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmileCameraViewController/SmileCameraViewController-Prefix.pch";
 				INFOPLIST_FILE = "SmileCameraViewControllerTests/SmileCameraViewControllerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SmileCameraViewControllerDemoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -441,7 +412,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6D028D9B19197BFF00A8E057 /* Build configuration list for PBXProject "SmileCameraViewController" */ = {
+		6D028D9B19197BFF00A8E057 /* Build configuration list for PBXProject "SmileCameraViewControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D028DD019197BFF00A8E057 /* Debug */,
@@ -450,21 +421,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D028DD219197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewController" */ = {
+		6D028DD219197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D028DD319197BFF00A8E057 /* Debug */,
 				6D028DD419197BFF00A8E057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		6D028DD519197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewControllerTests" */ = {
+		6D028DD519197BFF00A8E057 /* Build configuration list for PBXNativeTarget "SmileCameraViewControllerDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D028DD619197BFF00A8E057 /* Debug */,
 				6D028DD719197BFF00A8E057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
