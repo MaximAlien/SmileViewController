@@ -22,3 +22,5 @@ To use this view controller simply load it up from AppDelegate:
     return YES;
 }
 ```
+##Example
+![Screen1](https://drive.google.com/file/d/0B48ZO4yqLHXbb1dBX1Q2b1pDY1k/edit?usp=sharing)
