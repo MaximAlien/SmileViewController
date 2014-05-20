@@ -15,10 +15,12 @@ To use this view controller simply load it up from AppDelegate:
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.smileCameraViewController = [[SmileCameraViewController alloc] initWithNibName:@"SmileCameraViewController" bundle:nil];
-    self.window.rootViewController = self.smileCameraViewController;
-
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    
+    SmileCameraViewController *smileCameraViewController = [[SmileCameraViewController alloc]     initWithNibName:@"SmileCameraViewController" bundle:nil];
+    self.window.rootViewController = smileCameraViewController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 ```
