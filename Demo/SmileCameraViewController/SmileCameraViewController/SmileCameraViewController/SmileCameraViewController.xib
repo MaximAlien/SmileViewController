@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -32,7 +32,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="retakeItemPressed:" destination="-1" eventType="touchUpInside" id="sYK-uh-hMF"/>
+                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="0Vr-YA-lJt"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQt-BF-6Xb">
@@ -42,7 +42,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="retakeItemPressed:" destination="-1" eventType="touchUpInside" id="J1y-tn-pCQ"/>
+                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="OhK-Q2-sn5"/>
                                 <action selector="shareViaTwitter:" destination="-1" eventType="touchUpInside" id="Ycb-dL-r88"/>
                             </connections>
                         </button>
@@ -53,7 +53,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="retakeItemPressed:" destination="-1" eventType="touchUpInside" id="TM7-WR-GzE"/>
+                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="tXA-Fb-wp7"/>
                                 <action selector="shareViaFacebook:" destination="-1" eventType="touchUpInside" id="Fhj-nP-Xce"/>
                             </connections>
                         </button>
@@ -64,7 +64,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="retakeItemPressed:" destination="-1" eventType="touchUpInside" id="uLh-wG-hg9"/>
+                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="cuM-eZ-9MI"/>
                                 <action selector="shareViaInstagram:" destination="-1" eventType="touchUpInside" id="G8O-e7-Vpp"/>
                             </connections>
                         </button>

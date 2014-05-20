@@ -60,7 +60,6 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 @interface SmileCameraViewController (InternalMethods)
 
 - (void)setupAVCapture;
-- (void)teardownAVCapture;
 - (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize;
 
 @end
@@ -117,25 +116,24 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     
 bail:
     
-	if (error) {
+	if (error)
+    {
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Failed with error %d", (int)[error code]]
 															message:[error localizedDescription]
 														   delegate:nil
 												  cancelButtonTitle:@"Dismiss"
 												  otherButtonTitles:nil];
 		[alertView show];
-        
-		[self teardownAVCapture];
 	}
     
     AVCaptureDevicePosition desiredPosition = AVCaptureDevicePositionFront;
 	
-	for (AVCaptureDevice *d in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo])
+	for (AVCaptureDevice *captureDevice in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo])
     {
-		if ([d position] == desiredPosition)
+		if ([captureDevice position] == desiredPosition)
         {
 			[[mPreviewLayer session] beginConfiguration];
-			AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:d error:nil];
+			AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
 			
             for (AVCaptureInput *oldInput in [[mPreviewLayer session] inputs])
             {
@@ -167,8 +165,7 @@ bail:
     
 	NSDictionary *imageOptions = nil;
     
-	imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6], CIDetectorImageOrientation,
-                    [NSNumber numberWithBool:YES], CIDetectorSmile, nil];
+	imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6], CIDetectorImageOrientation, [NSNumber numberWithBool:YES], CIDetectorSmile, nil];
     
 	NSArray *features = [mFaceDetector featuresInImage:ciImage options:imageOptions];
     
@@ -176,12 +173,14 @@ bail:
     {
         if (faceFeature.hasSmile)
         {
-            dispatch_async(dispatch_get_main_queue(), ^(void) {
+            dispatch_async(dispatch_get_main_queue(), ^(void)
+            {
                 UIImage *image = [[UIImage alloc] initWithCIImage:ciImage];
                 mTakenPhoto = image;
             });
             
             [[mPreviewLayer session] stopRunning];
+            
             break;
         }
     }
@@ -195,8 +194,8 @@ bail:
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 	[self setupAVCapture];
+    
 	NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
 	mFaceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
 }
@@ -226,7 +225,7 @@ bail:
 	[super viewDidDisappear:animated];
 }
 
-- (IBAction)retakeItemPressed:(id)sender
+- (IBAction)retakePhotoButtonPressed:(id)sender
 {
     if (![[mPreviewLayer session] isRunning])
     {
@@ -245,16 +244,16 @@ bail:
     
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
     {
-        UIDocumentInteractionController *documentInteractionController;
-        documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
+        UIDocumentInteractionController *documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
         documentInteractionController.UTI = @"com.instagram.exclusivegram";
         documentInteractionController.delegate = self;
+        documentInteractionController.annotation = [NSDictionary dictionaryWithObject:@"Your Caption here" forKey:@"InstagramCaption"];
         [documentInteractionController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
     }
 }
 
-- (UIDocumentInteractionController *) setupControllerWithURL: (NSURL*) fileURL usingDelegate: (id <UIDocumentInteractionControllerDelegate>) interactionDelegate {
-    
+- (UIDocumentInteractionController *) setupControllerWithURL: (NSURL*) fileURL usingDelegate: (id <UIDocumentInteractionControllerDelegate>) interactionDelegate
+{
     UIDocumentInteractionController *interactionController = [UIDocumentInteractionController interactionControllerWithURL: fileURL];
     interactionController.delegate = interactionDelegate;
     
