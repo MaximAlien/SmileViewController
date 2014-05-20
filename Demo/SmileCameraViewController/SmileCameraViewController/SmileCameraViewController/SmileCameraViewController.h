@@ -23,7 +23,7 @@
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *retakePhotoButton;
-@property (retain, nonatomic) UIDocumentInteractionController *documentController;
+@property (strong, nonatomic) UIDocumentInteractionController *documentController;
 
 - (IBAction)shareViaInstagram:(id)sender;
 - (IBAction)shareViaFacebook:(id)sender;

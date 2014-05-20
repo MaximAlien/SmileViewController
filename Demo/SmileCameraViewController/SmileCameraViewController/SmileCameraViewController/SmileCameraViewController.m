@@ -244,11 +244,11 @@ bail:
     
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
     {
-        UIDocumentInteractionController *documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
-        documentInteractionController.UTI = @"com.instagram.exclusivegram";
-        documentInteractionController.delegate = self;
-        documentInteractionController.annotation = [NSDictionary dictionaryWithObject:@"Your Caption here" forKey:@"InstagramCaption"];
-        [documentInteractionController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+        _documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
+        _documentController.UTI = @"com.instagram.exclusivegram";
+        _documentController.delegate = self;
+        _documentController.annotation = [NSDictionary dictionaryWithObject:@"Your Caption here" forKey:@"InstagramCaption"];
+        [_documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
     }
 }
 
@@ -286,7 +286,7 @@ bail:
     {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Facebook is not available"
-                                  message:@"Make sure your device has an internet connection and you have at least one Facebook account setup"
+                                  message:@"Make sure your device has an internet connection and you have at least one Facebook account added"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
@@ -312,7 +312,7 @@ bail:
     {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Facebook is not available"
-                                  message:@"Make sure your device has an internet connection and you have at least one Facebook account setup"
+                                  message:@"Make sure your device has an internet connection and you have at least one Twitter account added"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
