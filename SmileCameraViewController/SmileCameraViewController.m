@@ -311,7 +311,7 @@ bail:
     else
     {
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Facebook is not available"
+                                  initWithTitle:@"Twitter is not available"
                                   message:@"Make sure your device has an internet connection and you have at least one Twitter account added"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
