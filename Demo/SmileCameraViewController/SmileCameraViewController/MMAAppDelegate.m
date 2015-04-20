@@ -12,38 +12,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    SmileCameraViewController *smileCameraViewController = [[SmileCameraViewController alloc]     initWithNibName:@"SmileCameraViewController" bundle:nil];
+    SmileCameraViewController *smileCameraViewController = [[SmileCameraViewController alloc] initWithNibName:@"SmileCameraViewController" bundle:nil];
     self.window.rootViewController = smileCameraViewController;
     [self.window makeKeyAndVisible];
     
     return YES;
-}
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    
 }
 
 @end
