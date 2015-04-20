@@ -14,12 +14,12 @@
 @interface SmileCameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, UIDocumentInteractionControllerDelegate>
 {
     IBOutlet UIView *previewView;
-	AVCaptureVideoPreviewLayer *mPreviewLayer;
-	AVCaptureVideoDataOutput *mVideoDataOutput;
-	dispatch_queue_t mVideoDataOutputQueue;
-	AVCaptureStillImageOutput *mStillImageOutput;
-	CIDetector *mFaceDetector;
-    UIImage *mTakenPhoto;
+	AVCaptureVideoPreviewLayer *previewLayer;
+	AVCaptureVideoDataOutput *videoDataOutput;
+	dispatch_queue_t videoDataOutputQueue;
+	AVCaptureStillImageOutput *stillImageOutput;
+	CIDetector *faceDetector;
+    UIImage *takenPhotoImage;
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *retakePhotoButton;

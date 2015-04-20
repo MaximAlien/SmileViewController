@@ -81,44 +81,41 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
         [session addInput:deviceInput];
     }
     
-	mStillImageOutput = [AVCaptureStillImageOutput new];
-	[mStillImageOutput addObserver:self forKeyPath:@"capturingStillImage" options:NSKeyValueObservingOptionNew context:(__bridge void *)(AVCaptureStillImageIsCapturingStillImageContext)];
-	if ([session canAddOutput:mStillImageOutput])
+	stillImageOutput = [AVCaptureStillImageOutput new];
+	[stillImageOutput addObserver:self forKeyPath:@"capturingStillImage" options:NSKeyValueObservingOptionNew context:(__bridge void *)(AVCaptureStillImageIsCapturingStillImageContext)];
+	if ([session canAddOutput:stillImageOutput])
     {
-        [session addOutput:mStillImageOutput];
+        [session addOutput:stillImageOutput];
     }
     
-	mVideoDataOutput = [AVCaptureVideoDataOutput new];
+	videoDataOutput = [AVCaptureVideoDataOutput new];
 	
-	NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:
-									   [NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
-	[mVideoDataOutput setVideoSettings:rgbOutputSettings];
-	[mVideoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+	NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+	[videoDataOutput setVideoSettings:rgbOutputSettings];
+	[videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
     
-	mVideoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-	[mVideoDataOutput setSampleBufferDelegate:self queue:mVideoDataOutputQueue];
+	videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
+	[videoDataOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];
 	
-    if ([session canAddOutput:mVideoDataOutput])
+    if ([session canAddOutput:videoDataOutput])
     {
-        [session addOutput:mVideoDataOutput];
+        [session addOutput:videoDataOutput];
     }
     
-	[[mVideoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
+	[[videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
 	
-	mPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-	[mPreviewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
-	[mPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+	previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+	[previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
+	[previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
 	CALayer *rootLayer = [previewView layer];
 	[rootLayer setMasksToBounds:YES];
-	[mPreviewLayer setFrame:[rootLayer bounds]];
-	[rootLayer addSublayer:mPreviewLayer];
+	[previewLayer setFrame:[rootLayer bounds]];
+	[rootLayer addSublayer:previewLayer];
 	[session startRunning];
-    
-bail:
     
 	if (error)
     {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Failed with error %d", (int)[error code]]
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Failed with error: %d", (int)[error code]]
 															message:[error localizedDescription]
 														   delegate:nil
 												  cancelButtonTitle:@"Dismiss"
@@ -132,16 +129,16 @@ bail:
     {
 		if ([captureDevice position] == desiredPosition)
         {
-			[[mPreviewLayer session] beginConfiguration];
+			[[previewLayer session] beginConfiguration];
 			AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
 			
-            for (AVCaptureInput *oldInput in [[mPreviewLayer session] inputs])
+            for (AVCaptureInput *oldInput in [[previewLayer session] inputs])
             {
-				[[mPreviewLayer session] removeInput:oldInput];
+				[[previewLayer session] removeInput:oldInput];
 			}
             
-			[[mPreviewLayer session] addInput:input];
-			[[mPreviewLayer session] commitConfiguration];
+			[[previewLayer session] addInput:input];
+			[[previewLayer session] commitConfiguration];
 			break;
 		}
 	}
@@ -151,7 +148,6 @@ bail:
 {
     return YES;
 }
-
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
@@ -163,32 +159,24 @@ bail:
         CFRelease(attachments);
     }
     
-	NSDictionary *imageOptions = nil;
+	NSDictionary *imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6], CIDetectorImageOrientation, [NSNumber numberWithBool:YES], CIDetectorSmile, nil];
+	NSArray *features = [faceDetector featuresInImage:ciImage options:imageOptions];
     
-	imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6], CIDetectorImageOrientation, [NSNumber numberWithBool:YES], CIDetectorSmile, nil];
-    
-	NSArray *features = [mFaceDetector featuresInImage:ciImage options:imageOptions];
-    
-    for (CIFaceFeature* faceFeature in features)
+    for (CIFaceFeature *faceFeature in features)
     {
         if (faceFeature.hasSmile)
         {
             dispatch_async(dispatch_get_main_queue(), ^(void)
             {
                 UIImage *image = [[UIImage alloc] initWithCIImage:ciImage];
-                mTakenPhoto = image;
+                takenPhotoImage = image;
             });
             
-            [[mPreviewLayer session] stopRunning];
+            [[previewLayer session] stopRunning];
             
             break;
         }
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidLoad
@@ -197,45 +185,20 @@ bail:
 	[self setupAVCapture];
     
 	NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
-	mFaceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
+	faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
 }
 
 - (IBAction)retakePhotoButtonPressed:(id)sender
 {
-    if (![[mPreviewLayer session] isRunning])
+    if (![[previewLayer session] isRunning])
     {
-        [[mPreviewLayer session] startRunning];
+        [[previewLayer session] startRunning];
     }
 }
 
 - (IBAction)shareViaInstagram:(id)sender
 {
-    UIImage *image = [self resizeImage:mTakenPhoto scaledToSize:CGSizeMake(640, 480)];
+    UIImage *image = [self resizeImage:takenPhotoImage scaledToSize:CGSizeMake(640, 480)];
     image = [image imageRotatedByDegrees:90.0];
     
     NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/originalImage.ig"];
@@ -244,11 +207,11 @@ bail:
     
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
     {
-        _documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
-        _documentController.UTI = @"com.instagram.exclusivegram";
-        _documentController.delegate = self;
-        _documentController.annotation = [NSDictionary dictionaryWithObject:@"Your Caption here" forKey:@"InstagramCaption"];
-        [_documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+        self.documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
+        self.documentController.UTI = @"com.instagram.exclusivegram";
+        self.documentController.delegate = self;
+        self.documentController.annotation = [NSDictionary dictionaryWithObject:@"" forKey:@"InstagramCaption"];
+        [self.documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
     }
 }
 
@@ -274,9 +237,9 @@ bail:
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet setInitialText:@"Your text here"];
+        [mySLComposerSheet setInitialText:@""];
         
-        UIImage *image = [self resizeImage:mTakenPhoto scaledToSize:CGSizeMake(640, 480)];
+        UIImage *image = [self resizeImage:takenPhotoImage scaledToSize:CGSizeMake(640, 480)];
         image = [image imageRotatedByDegrees:90.0];
         [mySLComposerSheet addImage:image];
         
@@ -299,9 +262,9 @@ bail:
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
         SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [mySLComposerSheet setInitialText:@"Your text here"];
+        [mySLComposerSheet setInitialText:@""];
         
-        UIImage *image = [self resizeImage:mTakenPhoto scaledToSize:CGSizeMake(640, 480)];
+        UIImage *image = [self resizeImage:takenPhotoImage scaledToSize:CGSizeMake(640, 480)];
         image = [image imageRotatedByDegrees:90.0];
         
         [mySLComposerSheet addImage:image];
@@ -311,7 +274,7 @@ bail:
     else
     {
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Twitter is not available"
+                                  initWithTitle:@"Facebook is not available"
                                   message:@"Make sure your device has an internet connection and you have at least one Twitter account added"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
