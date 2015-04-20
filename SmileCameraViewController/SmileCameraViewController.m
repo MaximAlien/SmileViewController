@@ -60,7 +60,6 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 @interface SmileCameraViewController (InternalMethods)
 
 - (void)setupAVCapture;
-- (UIImage *)resizeImage:(UIImage*)image newSize:(CGSize)newSize;
 
 @end
 
@@ -182,6 +181,7 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	[self setupAVCapture];
     
 	NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
@@ -247,12 +247,11 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     }
     else
     {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Facebook is not available"
-                                  message:@"Make sure your device has an internet connection and you have at least one Facebook account added"
-                                  delegate:self
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook is not available"
+                                                            message:@"Make sure your device has an internet connection and you have at least one Facebook account added"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
         [alertView show];
     }
 }
@@ -273,12 +272,11 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     }
     else
     {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Facebook is not available"
-                                  message:@"Make sure your device has an internet connection and you have at least one Twitter account added"
-                                  delegate:self
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook is not available"
+                                                            message:@"Make sure your device has an internet connection and you have at least one Twitter account added"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
         [alertView show];
     }
 }
