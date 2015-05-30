@@ -13,9 +13,9 @@ To use this view controller simply load it up from AppDelegate:
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    SmileCameraViewController *smileCameraViewController = [[SmileCameraViewController alloc]     initWithNibName:@"SmileCameraViewController" bundle:nil];
+    SmileCameraViewController *smileCameraViewController = [[SmileCameraViewController alloc] initWithNibName:@"SmileCameraViewController" bundle:nil];
     self.window.rootViewController = smileCameraViewController;
     [self.window makeKeyAndVisible];
     
@@ -23,4 +23,4 @@ To use this view controller simply load it up from AppDelegate:
 }
 ```
 ##Example
-![Screen1](https://raw.githubusercontent.com/MaximAlien/Smile-Detector-CameraViewController/master/resources/example2.png)
+![Screen1](https://raw.githubusercontent.com/MaximAlien/Smile-Detector-CameraViewController/master/resources/example.png)
