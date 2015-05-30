@@ -15,8 +15,8 @@
 		6D028DB419197BFF00A8E057 /* MMAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D028DB319197BFF00A8E057 /* MMAAppDelegate.m */; };
 		6D028DBC19197BFF00A8E057 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D028DBB19197BFF00A8E057 /* Images.xcassets */; };
 		6D028DD919197D9A00A8E057 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D028DD819197D9A00A8E057 /* AVFoundation.framework */; };
-		6D9B3D6F191D1B1A00172DBC /* SmileCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3D6D191D1B1A00172DBC /* SmileCameraViewController.m */; };
-		6D9B3D70191D1B1A00172DBC /* SmileCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D9B3D6E191D1B1A00172DBC /* SmileCameraViewController.xib */; };
+		6DCB6D3A1B19C96800F765B0 /* SmileCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB6D381B19C96800F765B0 /* SmileCameraViewController.m */; };
+		6DCB6D3B1B19C96800F765B0 /* SmileCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DCB6D391B19C96800F765B0 /* SmileCameraViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +32,9 @@
 		6D028DB319197BFF00A8E057 /* MMAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAAppDelegate.m; sourceTree = "<group>"; };
 		6D028DBB19197BFF00A8E057 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6D028DD819197D9A00A8E057 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		6D9B3D6C191D1B1A00172DBC /* SmileCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmileCameraViewController.h; path = SmileCameraViewController/SmileCameraViewController/SmileCameraViewController.h; sourceTree = "<group>"; };
-		6D9B3D6D191D1B1A00172DBC /* SmileCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmileCameraViewController.m; path = SmileCameraViewController/SmileCameraViewController/SmileCameraViewController.m; sourceTree = "<group>"; };
-		6D9B3D6E191D1B1A00172DBC /* SmileCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmileCameraViewController.xib; path = SmileCameraViewController/SmileCameraViewController/SmileCameraViewController.xib; sourceTree = "<group>"; };
+		6DCB6D371B19C96800F765B0 /* SmileCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileCameraViewController.h; sourceTree = "<group>"; };
+		6DCB6D381B19C96800F765B0 /* SmileCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileCameraViewController.m; sourceTree = "<group>"; };
+		6DCB6D391B19C96800F765B0 /* SmileCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmileCameraViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,9 @@
 		6D028D9719197BFF00A8E057 = {
 			isa = PBXGroup;
 			children = (
-				6D028DDA19197E3C00A8E057 /* SmileCameraViewController */,
+				6DCB6D371B19C96800F765B0 /* SmileCameraViewController.h */,
+				6DCB6D381B19C96800F765B0 /* SmileCameraViewController.m */,
+				6DCB6D391B19C96800F765B0 /* SmileCameraViewController.xib */,
 				6D028DA919197BFF00A8E057 /* SmileCameraViewControllerDemo */,
 				6D028DA219197BFF00A8E057 /* Frameworks */,
 				6D028DA119197BFF00A8E057 /* Products */,
@@ -102,16 +104,6 @@
 				6D028DB119197BFF00A8E057 /* SmileCameraViewControllerDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6D028DDA19197E3C00A8E057 /* SmileCameraViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6D9B3D6C191D1B1A00172DBC /* SmileCameraViewController.h */,
-				6D9B3D6D191D1B1A00172DBC /* SmileCameraViewController.m */,
-				6D9B3D6E191D1B1A00172DBC /* SmileCameraViewController.xib */,
-			);
-			name = SmileCameraViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +161,7 @@
 			files = (
 				6D028DBC19197BFF00A8E057 /* Images.xcassets in Resources */,
 				6D028DAE19197BFF00A8E057 /* InfoPlist.strings in Resources */,
-				6D9B3D70191D1B1A00172DBC /* SmileCameraViewController.xib in Resources */,
+				6DCB6D3B1B19C96800F765B0 /* SmileCameraViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +172,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D9B3D6F191D1B1A00172DBC /* SmileCameraViewController.m in Sources */,
 				6D028DB419197BFF00A8E057 /* MMAAppDelegate.m in Sources */,
+				6DCB6D3A1B19C96800F765B0 /* SmileCameraViewController.m in Sources */,
 				6D028DB019197BFF00A8E057 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
