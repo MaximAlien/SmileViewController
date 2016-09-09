@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmileCameraViewController">
@@ -17,58 +17,75 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gCm-ut-r28">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCm-ut-r28">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgQ-vh-YLn">
-                    <rect key="frame" x="0.0" y="516" width="320" height="54"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbf-ym-c8B">
-                            <rect key="frame" x="180" y="7" width="40" height="40"/>
-                            <state key="normal" image="reload-75">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="0Vr-YA-lJt"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQt-BF-6Xb">
-                            <rect key="frame" x="20" y="7" width="40" height="40"/>
-                            <state key="normal" image="twitter-75">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="OhK-Q2-sn5"/>
-                                <action selector="shareViaTwitter:" destination="-1" eventType="touchUpInside" id="Ycb-dL-r88"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E77-PY-3jg">
-                            <rect key="frame" x="100" y="7" width="40" height="40"/>
-                            <state key="normal" image="facebook-75">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="tXA-Fb-wp7"/>
-                                <action selector="shareViaFacebook:" destination="-1" eventType="touchUpInside" id="Fhj-nP-Xce"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsv-fX-YaU">
-                            <rect key="frame" x="250" y="7" width="40" height="40"/>
-                            <state key="normal" image="instagram-75">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="cuM-eZ-9MI"/>
-                                <action selector="shareViaInstagram:" destination="-1" eventType="touchUpInside" id="G8O-e7-Vpp"/>
-                            </connections>
-                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgQ-vh-YLn">
+                            <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbf-ym-c8B">
+                                    <rect key="frame" x="180" y="7" width="40" height="40"/>
+                                    <state key="normal" image="reload-75">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="0Vr-YA-lJt"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQt-BF-6Xb">
+                                    <rect key="frame" x="20" y="7" width="40" height="40"/>
+                                    <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                    <state key="normal" image="twitter-75">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="OhK-Q2-sn5"/>
+                                        <action selector="shareViaTwitter:" destination="-1" eventType="touchUpInside" id="Ycb-dL-r88"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E77-PY-3jg">
+                                    <rect key="frame" x="100" y="7" width="40" height="40"/>
+                                    <state key="normal" image="facebook-75">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="tXA-Fb-wp7"/>
+                                        <action selector="shareViaFacebook:" destination="-1" eventType="touchUpInside" id="Fhj-nP-Xce"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsv-fX-YaU">
+                                    <rect key="frame" x="250" y="7" width="40" height="40"/>
+                                    <state key="normal" image="instagram-75">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="cuM-eZ-9MI"/>
+                                        <action selector="shareViaInstagram:" destination="-1" eventType="touchUpInside" id="G8O-e7-Vpp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="S7E-UO-OGU"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="TgQ-vh-YLn" secondAttribute="trailing" id="3NZ-K1-7aS"/>
+                        <constraint firstAttribute="bottom" secondItem="TgQ-vh-YLn" secondAttribute="bottom" id="L9x-Mp-UUy"/>
+                        <constraint firstItem="TgQ-vh-YLn" firstAttribute="leading" secondItem="gCm-ut-r28" secondAttribute="leading" id="e67-gx-EyP"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="335" y="358"/>
+            <constraints>
+                <constraint firstItem="gCm-ut-r28" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="35n-do-COl"/>
+                <constraint firstAttribute="bottom" secondItem="gCm-ut-r28" secondAttribute="bottom" id="o6M-PZ-FcN"/>
+                <constraint firstItem="gCm-ut-r28" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ofY-Yk-FSO"/>
+                <constraint firstAttribute="trailing" secondItem="gCm-ut-r28" secondAttribute="trailing" id="yVY-No-0Hh"/>
+            </constraints>
+            <point key="canvasLocation" x="946" y="786"/>
         </view>
     </objects>
     <resources>
@@ -77,9 +94,4 @@
         <image name="reload-75" width="75" height="75"/>
         <image name="twitter-75" width="75" height="75"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
