@@ -7,14 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "SmileCameraViewController.h"
+#import "SmileViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    SmileCameraViewController *smileCameraViewController = [SmileCameraViewController new];
+    SmileViewController *smileCameraViewController = [SmileViewController new];
     self.window.rootViewController = smileCameraViewController;
     [self.window makeKeyAndVisible];
     

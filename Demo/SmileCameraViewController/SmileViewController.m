@@ -8,92 +8,109 @@
 
 @import Social;
 
-#import "SmileCameraViewController.h"
+#import "SmileViewController.h"
 #import "UIImage+Additions.h"
 
 static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
 
-@interface SmileCameraViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, UIDocumentInteractionControllerDelegate>
+@interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, UIDocumentInteractionControllerDelegate>
 
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
-@property (strong, nonatomic) AVCaptureVideoDataOutput *videoDataOutput;
-@property (strong, nonatomic) dispatch_queue_t videoDataOutputQueue;
-@property (strong, nonatomic) AVCaptureStillImageOutput *stillImageOutput;
-@property (strong, nonatomic) CIDetector *faceDetector;
+@property (strong, nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (strong, nonatomic) UIImage *takenPhotoImage;
-@property (strong, nonatomic) UIDocumentInteractionController *documentController;
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UIButton *retakePhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareViaTwitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareViaFacebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareViaInstagramButton;
 
 - (IBAction)shareViaInstagram:(id)sender;
 - (IBAction)shareViaFacebook:(id)sender;
 - (IBAction)shareViaTwitter:(id)sender;
 - (IBAction)retakePhotoButtonPressed:(id)sender;
 
-- (void)setupAVCapture;
-
 @end
 
-@implementation SmileCameraViewController
+@implementation SmileViewController
 
 #pragma mark - UIViewController lifecycle methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupAVCapture];
-    
-    NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
-    self.faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
+    [self setupCaptureDeviceInput];
+    [self setupCaptureStillImageOutput];
+    [self setupCaptureVideoDataOutput];
+    [self setupCaptureVideoPreviewLayer];
+    [self setupCaptureDevice];
+    [self styleSharingButtons];
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
-- (void)setupAVCapture {
-    NSError *error = nil;
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
-    AVCaptureSession *session = [AVCaptureSession new];
-    [session setSessionPreset:AVCaptureSessionPreset640x480];
+    [self.captureVideoPreviewLayer setFrame:self.previewView.layer.frame];
+}
+
+#pragma mark - Setting up methods
+
++ (AVCaptureSession *)sharedSession {
+    static AVCaptureSession *sharedSession;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        sharedSession = [AVCaptureSession new];
+        sharedSession.sessionPreset = AVCaptureSessionPreset640x480;
+    });
+    
+    return sharedSession;
+}
+
+- (void)setupCaptureDeviceInput {
+    NSError *error = nil;
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     
-    if ([session canAddInput:deviceInput]) {
-        [session addInput:deviceInput];
+    if ([[SmileViewController sharedSession] canAddInput:deviceInput]) {
+        [[SmileViewController sharedSession] addInput:deviceInput];
     }
-    
-    self.stillImageOutput = [AVCaptureStillImageOutput new];
-    [self.stillImageOutput addObserver:self forKeyPath:@"capturingStillImage" options:NSKeyValueObservingOptionNew context:(__bridge void *)(AVCaptureStillImageIsCapturingStillImageContext)];
-    if ([session canAddOutput:self.stillImageOutput]) {
-        [session addOutput:self.stillImageOutput];
+}
+
+- (void)setupCaptureStillImageOutput {
+    AVCaptureStillImageOutput *captureStillImageOutput = [AVCaptureStillImageOutput new];
+    if ([[SmileViewController sharedSession] canAddOutput:captureStillImageOutput]) {
+        [[SmileViewController sharedSession] addOutput:captureStillImageOutput];
     }
+}
+
+- (void)setupCaptureVideoDataOutput {
+    AVCaptureVideoDataOutput *captureVideoDataOutput = [AVCaptureVideoDataOutput new];
     
-    self.videoDataOutput = [AVCaptureVideoDataOutput new];
+    NSDictionary *videoSettings = @{(id)kCVPixelBufferPixelFormatTypeKey : [NSNumber numberWithInt:kCMPixelFormat_32BGRA]};
+    [captureVideoDataOutput setVideoSettings:videoSettings];
+    [captureVideoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
+    [captureVideoDataOutput setSampleBufferDelegate:self
+                                              queue:dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL)];
+    [[captureVideoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
     
-    NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
-    [self.videoDataOutput setVideoSettings:rgbOutputSettings];
-    [self.videoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
-    
-    self.videoDataOutputQueue = dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL);
-    [self.videoDataOutput setSampleBufferDelegate:self queue:self.videoDataOutputQueue];
-    
-    if ([session canAddOutput:self.videoDataOutput]) {
-        [session addOutput:self.videoDataOutput];
+    if ([[SmileViewController sharedSession] canAddOutput:captureVideoDataOutput]) {
+        [[SmileViewController sharedSession] addOutput:captureVideoDataOutput];
     }
+}
+
+- (void)setupCaptureVideoPreviewLayer {
+    NSError *error = nil;
     
-    [[self.videoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
+    self.captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:[SmileViewController sharedSession]];
+    [self.captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    [self.previewView.layer addSublayer:self.captureVideoPreviewLayer];
     
-    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-    [self.previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
-    [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    CALayer *rootLayer = [self.previewView layer];
-    [rootLayer setMasksToBounds:YES];
-    [self.previewLayer setFrame:[rootLayer bounds]];
-    [rootLayer addSublayer:self.previewLayer];
-    [session startRunning];
+    [[SmileViewController sharedSession] startRunning];
     
     if (error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Failed with error: %d", (int)[error code]]
@@ -103,23 +120,32 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-    
-    AVCaptureDevicePosition desiredPosition = AVCaptureDevicePositionFront;
-    
+}
+
+- (void)setupCaptureDevice {
     for (AVCaptureDevice *captureDevice in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if ([captureDevice position] == desiredPosition) {
-            [[self.previewLayer session] beginConfiguration];
+        if ([captureDevice position] == AVCaptureDevicePositionFront) {
+            [[self.captureVideoPreviewLayer session] beginConfiguration];
             AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
             
-            for (AVCaptureInput *oldInput in [[self.previewLayer session] inputs]) {
-                [[self.previewLayer session] removeInput:oldInput];
+            for (AVCaptureInput *oldInput in [[self.captureVideoPreviewLayer session] inputs]) {
+                [[self.captureVideoPreviewLayer session] removeInput:oldInput];
             }
             
-            [[self.previewLayer session] addInput:input];
-            [[self.previewLayer session] commitConfiguration];
+            [[self.captureVideoPreviewLayer session] addInput:input];
+            [[self.captureVideoPreviewLayer session] commitConfiguration];
             break;
         }
     }
+}
+
+#pragma mark - Styling methods
+
+- (void)styleSharingButtons {
+    self.retakePhotoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.shareViaTwitterButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.shareViaFacebookButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.shareViaInstagramButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
@@ -132,8 +158,15 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         CFRelease(attachments);
     }
     
-    NSDictionary *imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6], CIDetectorImageOrientation, [NSNumber numberWithBool:YES], CIDetectorSmile, nil];
-    NSArray *features = [self.faceDetector featuresInImage:ciImage options:imageOptions];
+    NSDictionary *imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6],
+                                  CIDetectorImageOrientation,
+                                  [NSNumber numberWithBool:YES],
+                                  CIDetectorSmile,
+                                  nil];
+    
+    NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
+    CIDetector *faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
+    NSArray *features = [faceDetector featuresInImage:ciImage options:imageOptions];
     
     for (CIFaceFeature *faceFeature in features) {
         if (faceFeature.hasSmile) {
@@ -142,7 +175,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                 self.takenPhotoImage = image;
             });
             
-            [[self.previewLayer session] stopRunning];
+            [[self.captureVideoPreviewLayer session] stopRunning];
             
             break;
         }
@@ -152,9 +185,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 #pragma mark - Photo sharing methods
 
 - (IBAction)retakePhotoButtonPressed:(id)sender {
-    if (![self.previewLayer session].isRunning) {
+    if (![self.captureVideoPreviewLayer session].isRunning) {
         self.takenPhotoImage = nil;
-        [[self.previewLayer session] startRunning];
+        [[self.captureVideoPreviewLayer session] startRunning];
     }
 }
 
@@ -167,11 +200,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     NSURL *instagramURL = [NSURL URLWithString:@"instagram://app"];
     
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-        self.documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
-        self.documentController.UTI = @"com.instagram.exclusivegram";
-        self.documentController.delegate = self;
-        self.documentController.annotation = [NSDictionary dictionaryWithObject:@"" forKey:@"InstagramCaption"];
-        [self.documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
+        UIDocumentInteractionController *documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
+        documentController.UTI = @"com.instagram.exclusivegram";
+        documentController.delegate = self;
+        documentController.annotation = [NSDictionary dictionaryWithObject:@"" forKey:@"InstagramCaption"];
+        [documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
     }
 }
 

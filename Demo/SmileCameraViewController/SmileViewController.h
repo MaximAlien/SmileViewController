@@ -11,7 +11,7 @@
 
 @class CIDetector;
 
-@interface SmileCameraViewController : UIViewController
+@interface SmileViewController : UIViewController
 
 @end
 

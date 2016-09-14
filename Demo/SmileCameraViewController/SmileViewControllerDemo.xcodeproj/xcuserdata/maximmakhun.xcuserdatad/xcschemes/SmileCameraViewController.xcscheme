@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,18 +15,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6D028D9F19197BFF00A8E057"
-               BuildableName = "SmileCameraViewControllerDemo.app"
-               BlueprintName = "SmileCameraViewControllerDemo"
-               ReferencedContainer = "container:SmileCameraViewControllerDemo.xcodeproj">
+               BuildableName = "SmileViewControllerDemo.app"
+               BlueprintName = "SmileViewControllerDemo"
+               ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "6D028DC019197BFF00A8E057"
                BuildableName = "SmileCameraViewControllerDemoTests.xctest"
                BlueprintName = "SmileCameraViewControllerDemoTests"
-               ReferencedContainer = "container:SmileCameraViewControllerDemo.xcodeproj">
+               ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,46 +43,51 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D028D9F19197BFF00A8E057"
-            BuildableName = "SmileCameraViewControllerDemo.app"
-            BlueprintName = "SmileCameraViewControllerDemo"
-            ReferencedContainer = "container:SmileCameraViewControllerDemo.xcodeproj">
+            BuildableName = "SmileViewControllerDemo.app"
+            BlueprintName = "SmileViewControllerDemo"
+            ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D028D9F19197BFF00A8E057"
-            BuildableName = "SmileCameraViewControllerDemo.app"
-            BlueprintName = "SmileCameraViewControllerDemo"
-            ReferencedContainer = "container:SmileCameraViewControllerDemo.xcodeproj">
+            BuildableName = "SmileViewControllerDemo.app"
+            BlueprintName = "SmileViewControllerDemo"
+            ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6D028D9F19197BFF00A8E057"
-            BuildableName = "SmileCameraViewControllerDemo.app"
-            BlueprintName = "SmileCameraViewControllerDemo"
-            ReferencedContainer = "container:SmileCameraViewControllerDemo.xcodeproj">
+            BuildableName = "SmileViewControllerDemo.app"
+            BlueprintName = "SmileViewControllerDemo"
+            ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

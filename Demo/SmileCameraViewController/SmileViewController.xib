@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmileViewController">
+            <connections>
+                <outlet property="previewView" destination="gCm-ut-r28" id="L3v-dR-WoF"/>
+                <outlet property="retakePhotoButton" destination="tbf-ym-c8B" id="odb-av-Exk"/>
+                <outlet property="shareViaFacebookButton" destination="E77-PY-3jg" id="cmO-UP-0yK"/>
+                <outlet property="shareViaInstagramButton" destination="fsv-fX-YaU" id="7LR-6P-Oru"/>
+                <outlet property="shareViaTwitterButton" destination="MQt-BF-6Xb" id="T1w-dy-HOF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCm-ut-r28">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgQ-vh-YLn">
+                    <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbf-ym-c8B">
+                            <rect key="frame" x="300" y="10" width="150" height="30"/>
+                            <state key="normal" image="reload-75">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="retakePhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="0Vr-YA-lJt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQt-BF-6Xb">
+                            <rect key="frame" x="0.0" y="10" width="150" height="30"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            <state key="normal" image="twitter-75">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="shareViaTwitter:" destination="-1" eventType="touchUpInside" id="Ycb-dL-r88"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E77-PY-3jg">
+                            <rect key="frame" x="150" y="10" width="150" height="30"/>
+                            <state key="normal" image="facebook-75">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="shareViaFacebook:" destination="-1" eventType="touchUpInside" id="Fhj-nP-Xce"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsv-fX-YaU">
+                            <rect key="frame" x="450" y="10" width="150" height="30"/>
+                            <state key="normal" image="instagram-75">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="shareViaInstagram:" destination="-1" eventType="touchUpInside" id="G8O-e7-Vpp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="fsv-fX-YaU" firstAttribute="leading" secondItem="tbf-ym-c8B" secondAttribute="trailing" id="5SA-dY-cBT"/>
+                        <constraint firstAttribute="bottom" secondItem="MQt-BF-6Xb" secondAttribute="bottom" constant="10" id="F1m-ua-7co"/>
+                        <constraint firstAttribute="height" constant="50" id="GCJ-Hw-sPI"/>
+                        <constraint firstItem="MQt-BF-6Xb" firstAttribute="leading" secondItem="TgQ-vh-YLn" secondAttribute="leading" id="GF2-sc-EEv"/>
+                        <constraint firstAttribute="bottom" secondItem="tbf-ym-c8B" secondAttribute="bottom" constant="10" id="KTB-Rk-F31"/>
+                        <constraint firstItem="tbf-ym-c8B" firstAttribute="width" secondItem="MQt-BF-6Xb" secondAttribute="width" id="MTP-Oe-rI3"/>
+                        <constraint firstItem="tbf-ym-c8B" firstAttribute="leading" secondItem="E77-PY-3jg" secondAttribute="trailing" id="TJb-xX-w11"/>
+                        <constraint firstAttribute="bottom" secondItem="fsv-fX-YaU" secondAttribute="bottom" constant="10" id="TVQ-Rs-aBR"/>
+                        <constraint firstItem="fsv-fX-YaU" firstAttribute="top" secondItem="TgQ-vh-YLn" secondAttribute="top" constant="10" id="Xcf-Yd-Ak8"/>
+                        <constraint firstAttribute="trailing" secondItem="fsv-fX-YaU" secondAttribute="trailing" id="adX-uA-cX3"/>
+                        <constraint firstItem="fsv-fX-YaU" firstAttribute="width" secondItem="MQt-BF-6Xb" secondAttribute="width" id="d2P-Gn-upO"/>
+                        <constraint firstItem="tbf-ym-c8B" firstAttribute="top" secondItem="TgQ-vh-YLn" secondAttribute="top" constant="10" id="fPp-SN-Szv"/>
+                        <constraint firstAttribute="bottom" secondItem="E77-PY-3jg" secondAttribute="bottom" constant="10" id="kxQ-OU-K08"/>
+                        <constraint firstItem="MQt-BF-6Xb" firstAttribute="top" secondItem="TgQ-vh-YLn" secondAttribute="top" constant="10" id="o70-OZ-9ND"/>
+                        <constraint firstItem="E77-PY-3jg" firstAttribute="width" secondItem="MQt-BF-6Xb" secondAttribute="width" id="saE-Dk-SHW"/>
+                        <constraint firstItem="E77-PY-3jg" firstAttribute="top" secondItem="TgQ-vh-YLn" secondAttribute="top" constant="10" id="tFC-St-fOG"/>
+                        <constraint firstItem="E77-PY-3jg" firstAttribute="leading" secondItem="MQt-BF-6Xb" secondAttribute="trailing" id="ywm-lb-CYR"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TgQ-vh-YLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ADk-tJ-7Nf"/>
+                <constraint firstItem="gCm-ut-r28" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DcG-n0-8C3"/>
+                <constraint firstAttribute="trailing" secondItem="TgQ-vh-YLn" secondAttribute="trailing" id="PoI-hh-wWu"/>
+                <constraint firstItem="TgQ-vh-YLn" firstAttribute="top" secondItem="gCm-ut-r28" secondAttribute="bottom" id="TQ8-xp-y4h"/>
+                <constraint firstAttribute="trailing" secondItem="gCm-ut-r28" secondAttribute="trailing" id="ToC-XU-qdh"/>
+                <constraint firstItem="gCm-ut-r28" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="v2j-rd-kTa"/>
+                <constraint firstAttribute="bottom" secondItem="TgQ-vh-YLn" secondAttribute="bottom" id="vX1-xn-M7z"/>
+            </constraints>
+            <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-102" y="379"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="facebook-75" width="75" height="75"/>
+        <image name="instagram-75" width="75" height="75"/>
+        <image name="reload-75" width="75" height="75"/>
+        <image name="twitter-75" width="75" height="75"/>
+    </resources>
+</document>
