@@ -13,7 +13,7 @@
 
 static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
 
-@interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate, UIDocumentInteractionControllerDelegate>
+@interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (strong, nonatomic) UIImage *takenPhotoImage;
@@ -202,7 +202,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
         UIDocumentInteractionController *documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
         documentController.UTI = @"com.instagram.exclusivegram";
-        documentController.delegate = self;
+//        documentController.delegate = self;
         documentController.annotation = [NSDictionary dictionaryWithObject:@"" forKey:@"InstagramCaption"];
         [documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
     }
