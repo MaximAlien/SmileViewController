@@ -1,8 +1,7 @@
 //
 //  UIAlertController+Utilities.m
-//  SoundCloud
 //
-//  Created by Maxim Makhun on 8/25/16.
+//  Created by Maxim Makhun on 9/14/16.
 //  Copyright © 2016 Maxim Makhun. All rights reserved.
 //
 

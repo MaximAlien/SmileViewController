@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  SmileCameraViewController
+//  SmileViewControllerDemo
 //
-//  Created by Maxim Makhun on 5/6/14.
-//  Copyright (c) 2014 MMA. All rights reserved.
+//  Created by Maxim Makhun on 9/14/16.
+//  Copyright © 2016 Maxim Makhun. All rights reserved.
 //
 
 #import "AppDelegate.h"

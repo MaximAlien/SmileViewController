@@ -1,19 +1,20 @@
 SmileViewController
 ===================================
 
-UIViewController that allows to detect smile in real time (AVFoundation and CIFaceFeature). There are additional features like photo sharing (Facebook, Twitter, Instagram). It's also possible to take new selfie by pressing Re-take button.
+UIViewController that allows to detect smile in real time (AVFoundation and CIFaceFeature). There are additional features like photo sharing (Facebook, Twitter). It's also possible to take new selfie by pressing re-take button.
 
-Project uses AVFoundation Framework.
+##Notes
+- Project uses AVFoundation Framework.
+- Application will work only on iOS 8 and higher. 
+- Application uses ARC.
 
-Application will work only on iOS 7 and higher. ARC is required.
- 
 ##Usage
 
 To use this view controller simply load it up from AppDelegate:
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     SmileViewController *smileViewController = [SmileViewController new];
     self.window.rootViewController = smileViewController;
@@ -23,4 +24,4 @@ To use this view controller simply load it up from AppDelegate:
 }
 ```
 ##Example
-![Screen1](https://raw.githubusercontent.com/MaximAlien/Smile-Detector-CameraViewController/master/resources/example.png)
+![Screen1](https://raw.githubusercontent.com/MaximAlien/SmileViewController/master/resources/example.png)

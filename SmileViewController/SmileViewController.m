@@ -1,9 +1,8 @@
 //
 //  SmileImageViewController.m
-//  SmileCameraViewControllerDemo
 //
-//  Created by Maxim Makhun on 5/9/14.
-//  Copyright (c) 2014 MMA. All rights reserved.
+//  Created by Maxim Makhun on 9/14/16.
+//  Copyright © 2016 Maxim Makhun. All rights reserved.
 //
 
 @import Social;
@@ -192,20 +191,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (IBAction)shareViaInstagram:(id)sender {
-    UIImage *image = [UIImage resizeImage:self.takenPhotoImage toSize:CGSizeMake(640.0f, 480.0f)];
-    image = [UIImage rotateImage:image byDegrees:90.0f withSize:image.size];
     
-    NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/originalImage.ig"];
-    [UIImagePNGRepresentation(image) writeToFile:savePath atomically:YES];
-    NSURL *instagramURL = [NSURL URLWithString:@"instagram://app"];
-    
-    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-        UIDocumentInteractionController *documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:savePath]];
-        documentController.UTI = @"com.instagram.exclusivegram";
-//        documentController.delegate = self;
-        documentController.annotation = [NSDictionary dictionaryWithObject:@"" forKey:@"InstagramCaption"];
-        [documentController presentOpenInMenuFromRect:CGRectZero inView:self.view animated:YES];
-    }
 }
 
 - (IBAction)shareViaFacebook:(id)sender {
