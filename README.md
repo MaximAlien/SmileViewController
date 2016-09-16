@@ -1,7 +1,7 @@
 SmileViewController
 ===================================
 
-UIViewController that allows to detect smile in real time (AVFoundation and CIFaceFeature). There are additional features like photo sharing (Facebook, Twitter). It's also possible to take new selfie by pressing re-take button.
+UIViewController that allows to detect smile in real time (AVFoundation and CoreImage). There are additional features like photo sharing (Facebook, Twitter). It's also possible to take new selfie by pressing re-take button.
 
 ##Notes
 - Project uses AVFoundation Framework.
