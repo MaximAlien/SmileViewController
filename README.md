@@ -12,8 +12,7 @@ UIViewController that allows to detect smile in real time (AVFoundation and Core
 
 To use this view controller simply load it up from AppDelegate:
 ```objective-c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     SmileViewController *smileViewController = [SmileViewController new];
