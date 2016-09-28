@@ -12,6 +12,11 @@
 
 @interface SmileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *retakePhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareViaTwitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareViaFacebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareViaInstagramButton;
+
 @end
 
 

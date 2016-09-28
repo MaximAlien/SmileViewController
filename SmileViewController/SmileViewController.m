@@ -18,10 +18,6 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 @property (strong, nonatomic) UIImage *takenPhotoImage;
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
-@property (weak, nonatomic) IBOutlet UIButton *retakePhotoButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareViaTwitterButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareViaFacebookButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareViaInstagramButton;
 
 - (IBAction)shareViaInstagram:(id)sender;
 - (IBAction)shareViaFacebook:(id)sender;
@@ -142,9 +138,16 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 - (void)styleSharingButtons {
     self.retakePhotoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.retakePhotoButton setTitle:@"Retake" forState:UIControlStateNormal];
+    
     self.shareViaTwitterButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.shareViaTwitterButton setTitle:@"Twitter" forState:UIControlStateNormal];
+    
     self.shareViaFacebookButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.shareViaFacebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
+    
     self.shareViaInstagramButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.shareViaInstagramButton setTitle:@"Instagram" forState:UIControlStateNormal];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
