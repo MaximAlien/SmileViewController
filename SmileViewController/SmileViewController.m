@@ -8,7 +8,10 @@
 @import Social;
 
 #import "SmileViewController.h"
+
+// Categories
 #import "UIImage+Additions.h"
+#import "UIAlertController+Utilities.h"
 
 static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
 
@@ -134,6 +137,10 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     }
 }
 
+- (IBAction)showFrontCamera:(id)sender {
+
+}
+
 #pragma mark - Styling methods
 
 - (void)styleSharingButtons {
@@ -200,7 +207,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (IBAction)shareViaFacebook:(id)sender {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [composeViewController setInitialText:@""];
         
         UIImage *image = [UIImage resizeImage:self.takenPhotoImage toSize:CGSizeMake(640.0f, 480.0f)];
         image = [UIImage rotateImage:image byDegrees:90.0f withSize:image.size];
@@ -208,33 +214,29 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         [self presentViewController:composeViewController animated:YES completion:nil];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Facebook is not available"
-                                                            message:@"Make sure your device has an internet connection and you have at least one Facebook account added"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Facebook is not available"
+                                                                           info:@"Make sure your device has an internet connection and you have at least one Facebook account added"
+                                                                        handler:nil]
+                           animated:YES
+                         completion:nil];
     }
 }
 
 - (IBAction)shareViaTwitter:(id)sender {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [composeViewController setInitialText:@""];
         
         UIImage *image = [UIImage resizeImage:self.takenPhotoImage toSize:CGSizeMake(640.0f, 480.0f)];
         image = [UIImage rotateImage:image byDegrees:90.0f withSize:image.size];
-        
         [composeViewController addImage:image];
         
         [self presentViewController:composeViewController animated:YES completion:nil];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Twitter is not available"
-                                                            message:@"Make sure your device has an internet connection and you have at least one Twitter account added"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Twitter is not available"
+                                                                           info:@"Make sure your device has an internet connection and you have at least one Twitter account added"
+                                                                        handler:nil]
+                           animated:YES
+                         completion:nil];
     }
 }
 

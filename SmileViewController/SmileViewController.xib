@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmileViewController">
             <connections>
+                <outlet property="changeCameraButton" destination="EOV-0S-cNV" id="TOf-Ei-MPT"/>
                 <outlet property="previewView" destination="gCm-ut-r28" id="L3v-dR-WoF"/>
                 <outlet property="retakePhotoButton" destination="tbf-ym-c8B" id="odb-av-Exk"/>
                 <outlet property="shareViaFacebookButton" destination="E77-PY-3jg" id="cmO-UP-0yK"/>
@@ -18,12 +19,24 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCm-ut-r28">
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOV-0S-cNV">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="4PB-RO-xEN"/>
+                        <constraint firstAttribute="width" constant="108" id="gVK-zV-0Qk"/>
+                    </constraints>
+                    <state key="normal" title="Change camera">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showFrontCamera:" destination="-1" eventType="touchUpInside" id="byx-EK-yg4"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgQ-vh-YLn">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbf-ym-c8B">
@@ -84,11 +97,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="EOV-0S-cNV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="6iW-RG-Fm5"/>
                 <constraint firstItem="TgQ-vh-YLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ADk-tJ-7Nf"/>
                 <constraint firstItem="gCm-ut-r28" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DcG-n0-8C3"/>
                 <constraint firstAttribute="trailing" secondItem="TgQ-vh-YLn" secondAttribute="trailing" id="PoI-hh-wWu"/>
                 <constraint firstItem="TgQ-vh-YLn" firstAttribute="top" secondItem="gCm-ut-r28" secondAttribute="bottom" id="TQ8-xp-y4h"/>
                 <constraint firstAttribute="trailing" secondItem="gCm-ut-r28" secondAttribute="trailing" id="ToC-XU-qdh"/>
+                <constraint firstItem="EOV-0S-cNV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="VB7-MG-5UG"/>
                 <constraint firstItem="gCm-ut-r28" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="v2j-rd-kTa"/>
                 <constraint firstAttribute="bottom" secondItem="TgQ-vh-YLn" secondAttribute="bottom" id="vX1-xn-M7z"/>
             </constraints>
