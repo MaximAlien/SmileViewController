@@ -8,7 +8,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmileViewController">
             <connections>
-                <outlet property="changeCameraButton" destination="EOV-0S-cNV" id="TOf-Ei-MPT"/>
                 <outlet property="previewView" destination="gCm-ut-r28" id="L3v-dR-WoF"/>
                 <outlet property="retakePhotoButton" destination="tbf-ym-c8B" id="odb-av-Exk"/>
                 <outlet property="shareViaFacebookButton" destination="E77-PY-3jg" id="cmO-UP-0yK"/>
