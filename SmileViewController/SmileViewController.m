@@ -12,6 +12,7 @@
 // Categories
 #import "UIImage+Additions.h"
 #import "UIAlertController+Utilities.h"
+#import "CIFaceFeature+Helpers.h"
 
 static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
 
@@ -19,7 +20,10 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property (strong, nonatomic) UIImage *takenPhotoImage;
-
+@property (strong, nonatomic) CALayer *rightEyeLayer;
+@property (strong, nonatomic) CALayer *leftEyeLayer;
+@property (strong, nonatomic) CALayer *mouthLayer;
+@property (strong, nonatomic) CALayer *faceLayer;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 
 - (IBAction)shareViaInstagram:(id)sender;
@@ -121,7 +125,7 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 - (void)setupCaptureDevice {
     for (AVCaptureDevice *captureDevice in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if ([captureDevice position] == AVCaptureDevicePositionFront) {
+        if ([captureDevice position] == AVCaptureDevicePositionBack) {
             [[self.captureVideoPreviewLayer session] beginConfiguration];
             AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
             
@@ -159,14 +163,17 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
+    
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
     CIImage *ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer options:(__bridge NSDictionary *)attachments];
+    UIImage *uiImage = [UIImage imageFromSampleBuffer:sampleBuffer];
+    
     if (attachments) {
         CFRelease(attachments);
     }
     
-    NSDictionary *imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:6],
+    NSDictionary *imageOptions = [NSDictionary dictionaryWithObjectsAndKeys:@6,
                                   CIDetectorImageOrientation,
                                   [NSNumber numberWithBool:YES],
                                   CIDetectorSmile,
@@ -177,16 +184,70 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     NSArray *features = [faceDetector featuresInImage:ciImage options:imageOptions];
     
     for (CIFaceFeature *faceFeature in features) {
-        if (faceFeature.hasSmile) {
-            dispatch_async(dispatch_get_main_queue(), ^(void) {
-                UIImage *image = [[UIImage alloc] initWithCIImage:ciImage];
-                self.takenPhotoImage = image;
-            });
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.rightEyeLayer removeFromSuperlayer];
             
-            [[self.captureVideoPreviewLayer session] stopRunning];
+            if (faceFeature.hasRightEyePosition) {
+                self.rightEyeLayer = [CALayer layer];
+                self.rightEyeLayer.frame = CGRectMake([faceFeature rightEyePositionForImage:uiImage size:self.previewView.frame.size].x,
+                                                      [faceFeature rightEyePositionForImage:uiImage size:self.previewView.frame.size].y,
+                                                      5.0f,
+                                                      5.0f);
+                self.rightEyeLayer.backgroundColor = [UIColor greenColor].CGColor;
+                self.rightEyeLayer.cornerRadius = CGRectGetWidth(self.leftEyeLayer.frame) / 2.0f;
+                
+                [self.previewView.layer addSublayer:self.rightEyeLayer];
+            }
+        });
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.leftEyeLayer removeFromSuperlayer];
             
-            break;
-        }
+            if (faceFeature.hasLeftEyePosition) {
+                self.leftEyeLayer = [CALayer layer];
+                self.leftEyeLayer.frame = CGRectMake([faceFeature leftEyePositionForImage:uiImage size:self.previewView.frame.size].x,
+                                                     [faceFeature leftEyePositionForImage:uiImage size:self.previewView.frame.size].y,
+                                                     5.0f,
+                                                     5.0f);
+                self.leftEyeLayer.backgroundColor = [UIColor redColor].CGColor;
+                self.leftEyeLayer.cornerRadius = CGRectGetWidth(self.leftEyeLayer.frame) / 2.0f;
+                
+                [self.previewView.layer addSublayer:self.leftEyeLayer];
+            }
+        });
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.mouthLayer removeFromSuperlayer];
+            
+            if (faceFeature.hasMouthPosition) {
+                self.mouthLayer = [CALayer layer];
+                self.mouthLayer.frame = CGRectMake([faceFeature mouthPositionForImage:uiImage size:self.previewView.frame.size].x,
+                                                   [faceFeature mouthPositionForImage:uiImage size:self.previewView.frame.size].y,
+                                                   5.0f,
+                                                   5.0f);
+                self.mouthLayer.backgroundColor = [UIColor blueColor].CGColor;
+                self.mouthLayer.cornerRadius = CGRectGetWidth(self.mouthLayer.frame) / 2.0f;
+                
+                [self.previewView.layer addSublayer:self.mouthLayer];
+            }
+        });
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.faceLayer removeFromSuperlayer];
+            
+            self.faceLayer = [CALayer layer];
+            CGRect bounds = [faceFeature boundsForImage:uiImage size:self.previewView.frame.size];
+            self.faceLayer.frame = CGRectMake(bounds.origin.x,
+                                              bounds.origin.y,
+                                              bounds.size.width,
+                                              bounds.size.height);
+            self.faceLayer.backgroundColor = [UIColor clearColor].CGColor;
+            self.faceLayer.borderColor = [UIColor blackColor].CGColor;
+            self.faceLayer.borderWidth = 3.0f;
+            self.faceLayer.transform = CATransform3DMakeRotation(faceFeature.faceAngle / 180.0 * M_PI, 0.0, 0.0, 1.0);
+            
+            [self.previewView.layer addSublayer:self.faceLayer];
+        });
     }
 }
 
