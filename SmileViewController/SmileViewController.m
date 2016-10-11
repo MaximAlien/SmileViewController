@@ -17,15 +17,17 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 @interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
+@property(nonatomic, weak) IBOutlet UIView *previewView;
+
 @property(nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
 @property(nonatomic, strong) UIImage *takenPhotoImage;
 @property(nonatomic, strong) AVCaptureDevice *captureDevice;
-@property(nonatomic, weak) IBOutlet UIView *previewView;
 
 - (IBAction)shareViaInstagram:(id)sender;
 - (IBAction)shareViaFacebook:(id)sender;
 - (IBAction)shareViaTwitter:(id)sender;
 - (IBAction)retakePhotoButtonPressed:(id)sender;
+- (IBAction)showFrontCamera:(id)sender;
 
 @end
 

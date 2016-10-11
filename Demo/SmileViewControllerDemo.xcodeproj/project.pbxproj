@@ -137,6 +137,7 @@
 				TargetAttributes = {
 					6D0D71D41D897BE4006AAE6C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6JW8AZ55UC;
 					};
 				};
 			};
@@ -286,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6JW8AZ55UC;
 				INFOPLIST_FILE = SmileViewControllerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -298,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6JW8AZ55UC;
 				INFOPLIST_FILE = SmileViewControllerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
