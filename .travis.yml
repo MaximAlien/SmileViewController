@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: Demo/SmileViewControllerDemo.xcodeproj
+xcode_scheme: SmileViewControllerDemo
+xcode_sdk: iphonesimulator10.0
