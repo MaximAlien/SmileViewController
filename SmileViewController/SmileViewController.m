@@ -246,6 +246,17 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             self.faceLayer.borderWidth = 3.0f;
             self.faceLayer.transform = CATransform3DMakeRotation(faceFeature.faceAngle / 180.0 * M_PI, 0.0, 0.0, 1.0);
             
+            CALayer *glassesLayer = [CALayer layer];
+            glassesLayer.frame = CGRectMake(0,
+                                            [faceFeature leftEyePositionForImage:uiImage size:self.previewView.frame.size].y - bounds.origin.y - 25,
+                                            bounds.size.width,
+                                            bounds.size.height / 3);
+            
+            UIImage *glassesImage = [UIImage imageNamed:@"glasses"];
+            glassesLayer.contents = (id)glassesImage.CGImage;
+            glassesLayer.contentsGravity = kCAGravityResizeAspect;
+            [self.faceLayer addSublayer:glassesLayer];
+            
             [self.previewView.layer addSublayer:self.faceLayer];
         });
     }
