@@ -1,10 +1,13 @@
 language: objective-c
-xcode_project: Demo/SmileViewControllerDemo.xcodeproj
-xcode_scheme: SmileViewControllerDemo
-script: 
-xctool 
--project Demo/SmileViewControllerDemo.xcodeproj 
--scheme SmileViewControllerDemo 
-build test
-CODE_SIGN_IDENTITY = ""
-CODE_SIGNING_REQUIRED = NO
+
+# xcode_project: Demo/SmileViewControllerDemo.xcodeproj
+# xcode_scheme: SmileViewControllerDemo
+
+script:
+  xctool
+  -project Demo/SmileViewControllerDemo.xcodeproj
+  -scheme SmileViewControllerDemo
+  build
+  test
+  CODE_SIGN_IDENTITY = ""
+  CODE_SIGNING_REQUIRED = NO
