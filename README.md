@@ -3,6 +3,7 @@ SmileViewController
 
 [![Build Status](https://travis-ci.org/MaximAlien/SmileViewController.svg?branch=master)](https://travis-ci.org/MaximAlien/SmileViewController)
 [![codecov](https://codecov.io/gh/MaximAlien/SmileViewController/branch/master/graph/badge.svg)](https://codecov.io/gh/MaximAlien/SmileViewController)
+[![CocoaPods](https://img.shields.io/cocoapods/v/SmileViewController.svg)](https://cocoapods.org/?q=name%3Asmileviewcontroller*)
 
 UIViewController that allows to detect smile in real time (AVFoundation and CoreImage). There are additional features like photo sharing (Facebook, Twitter). It's also possible to take new selfie by pressing re-take button.
 
