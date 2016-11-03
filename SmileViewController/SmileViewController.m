@@ -114,12 +114,11 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     [[SmileViewController sharedSession] startRunning];
     
     if (error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Failed with error: %d", (int)[error code]]
-                                                            message:[error localizedDescription]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Dismiss"
-                                                  otherButtonTitles:nil];
-        [alertView show];
+        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Initialization error"
+                                                                           info:[error localizedDescription]
+                                                                        handler:nil]
+                           animated:YES
+                         completion:nil];
     }
 }
 
