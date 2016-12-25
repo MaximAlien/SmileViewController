@@ -24,11 +24,8 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 @property(nonatomic, strong) CALayer *leftEyeLayer;
 @property(nonatomic, strong) CALayer *mouthLayer;
 @property(nonatomic, strong) CALayer *faceLayer;
-@property(nonatomic, weak) IBOutlet UIView *previewView;
-
-@property(nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
-@property(nonatomic, strong) UIImage *takenPhotoImage;
 @property(nonatomic, strong) AVCaptureDevice *captureDevice;
+@property(nonatomic, weak) IBOutlet UIView *previewView;
 
 - (IBAction)shareViaInstagram:(id)sender;
 - (IBAction)shareViaFacebook:(id)sender;
