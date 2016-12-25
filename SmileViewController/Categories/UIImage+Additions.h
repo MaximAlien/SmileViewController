@@ -6,6 +6,7 @@
 //
 
 @import UIKit;
+@import CoreMedia;
 
 @interface UIImage (Additions)
 
@@ -15,5 +16,7 @@
 
 + (UIImage *)resizeImage:(UIImage *)image
                   toSize:(CGSize)size;
+
++ (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 @end
