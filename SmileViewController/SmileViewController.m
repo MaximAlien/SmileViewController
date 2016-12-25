@@ -18,18 +18,23 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 @interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
-@property (strong, nonatomic) UIImage *takenPhotoImage;
-@property (strong, nonatomic) CALayer *rightEyeLayer;
-@property (strong, nonatomic) CALayer *leftEyeLayer;
-@property (strong, nonatomic) CALayer *mouthLayer;
-@property (strong, nonatomic) CALayer *faceLayer;
-@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property(nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
+@property(nonatomic, strong) UIImage *takenPhotoImage;
+@property(nonatomic, strong) CALayer *rightEyeLayer;
+@property(nonatomic, strong) CALayer *leftEyeLayer;
+@property(nonatomic, strong) CALayer *mouthLayer;
+@property(nonatomic, strong) CALayer *faceLayer;
+@property(nonatomic, weak) IBOutlet UIView *previewView;
+
+@property(nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
+@property(nonatomic, strong) UIImage *takenPhotoImage;
+@property(nonatomic, strong) AVCaptureDevice *captureDevice;
 
 - (IBAction)shareViaInstagram:(id)sender;
 - (IBAction)shareViaFacebook:(id)sender;
 - (IBAction)shareViaTwitter:(id)sender;
 - (IBAction)retakePhotoButtonPressed:(id)sender;
+- (IBAction)showFrontCamera:(id)sender;
 
 @end
 
@@ -79,6 +84,7 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
     
     if ([[SmileViewController sharedSession] canAddInput:deviceInput]) {
+        self.captureDevice = device;
         [[SmileViewController sharedSession] addInput:deviceInput];
     }
 }
@@ -141,7 +147,28 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 }
 
 - (IBAction)showFrontCamera:(id)sender {
+    AVCaptureDevice *frontCaptureDevice = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo][0];
+    AVCaptureDevice *backCaptureDevice = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo][1];
     
+    if (self.captureDevice.position == frontCaptureDevice.position) {
+        self.captureDevice = backCaptureDevice;
+    } else if (self.captureDevice.position == backCaptureDevice.position) {
+        self.captureDevice = frontCaptureDevice;
+    }
+    
+    [self switchCaptureDevice];
+}
+
+- (void)switchCaptureDevice {
+    [[SmileViewController sharedSession] beginConfiguration];
+    AVCaptureDeviceInput *newInput = [AVCaptureDeviceInput deviceInputWithDevice:self.captureDevice error:nil];
+    
+    for (AVCaptureInput *oldInput in [SmileViewController sharedSession].inputs) {
+        [[SmileViewController sharedSession] removeInput:oldInput];
+    }
+    
+    [[SmileViewController sharedSession] addInput:newInput];
+    [[SmileViewController sharedSession] commitConfiguration];
 }
 
 #pragma mark - Styling methods
