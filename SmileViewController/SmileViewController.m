@@ -256,6 +256,18 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             }
         });
         
+        // in case if user is smiling we stop any updates
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (faceFeature.hasSmile) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    UIImage *image = [[UIImage alloc] initWithCIImage:ciImage];
+                    self.takenPhotoImage = image;
+                });
+                
+                [[self.captureVideoPreviewLayer session] stopRunning];
+            }
+        });
+        
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             [self.faceLayer removeFromSuperlayer];
             
@@ -272,7 +284,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             
             CALayer *glassesLayer = [CALayer layer];
             glassesLayer.frame = CGRectMake(0,
-                                            [faceFeature leftEyePositionForImage:uiImage size:self.previewView.frame.size].y - bounds.origin.y - 25,
+                                            [faceFeature leftEyePositionForImage:uiImage size:self.previewView.frame.size].y - bounds.origin.y - 40,
                                             bounds.size.width,
                                             bounds.size.height / 3);
             
