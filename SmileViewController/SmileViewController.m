@@ -24,7 +24,6 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 @property(nonatomic, strong) CALayer *leftEyeLayer;
 @property(nonatomic, strong) CALayer *mouthLayer;
 @property(nonatomic, strong) CALayer *faceLayer;
-@property(nonatomic, strong) AVCaptureDevice *captureDevice;
 @property(nonatomic, weak) IBOutlet UIView *previewView;
 
 - (IBAction)shareViaInstagram:(id)sender;
@@ -42,11 +41,9 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupCaptureDeviceInput];
-    [self setupCaptureStillImageOutput];
-    [self setupCaptureVideoDataOutput];
     [self setupCaptureVideoPreviewLayer];
     [self setupCaptureDevice];
+    [self setupCaptureVideoDataOutput];
     [self styleSharingButtons];
 }
 
@@ -62,35 +59,39 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 #pragma mark - Setting up methods
 
-+ (AVCaptureSession *)sharedSession {
-    static AVCaptureSession *sharedSession;
-    static dispatch_once_t oncePredicate;
+- (void)setupCaptureVideoPreviewLayer {
+    AVCaptureSession *captureSession = [AVCaptureSession new];
+    captureSession.sessionPreset = AVCaptureSessionPreset640x480;
     
-    dispatch_once(&oncePredicate, ^{
-        sharedSession = [AVCaptureSession new];
-        sharedSession.sessionPreset = AVCaptureSessionPreset640x480;
-    });
+    self.captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
+    [self.captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    [self.previewView.layer addSublayer:self.captureVideoPreviewLayer];
     
-    return sharedSession;
+    [captureSession startRunning];
 }
 
-- (void)setupCaptureDeviceInput {
-    NSError *error = nil;
+- (void)setupCaptureDevice {
+    AVCaptureSession *captureSession = self.captureVideoPreviewLayer.session;
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera
+                                                                        mediaType:AVMediaTypeVideo
+                                                                         position:AVCaptureDevicePositionBack];
+    NSError *error;
+    AVCaptureDeviceInput *captureDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice
+                                                                                     error:&error];
     
-    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
     
-    if ([[SmileViewController sharedSession] canAddInput:deviceInput]) {
-        self.captureDevice = device;
-        [[SmileViewController sharedSession] addInput:deviceInput];
+    [captureSession beginConfiguration];
+    
+    if ([captureSession canAddInput:captureDeviceInput]) {
+        [captureSession addInput:captureDeviceInput];
+    } else {
+        NSLog(@"Unable to add new input.");
     }
-}
-
-- (void)setupCaptureStillImageOutput {
-    AVCaptureStillImageOutput *captureStillImageOutput = [AVCaptureStillImageOutput new];
-    if ([[SmileViewController sharedSession] canAddOutput:captureStillImageOutput]) {
-        [[SmileViewController sharedSession] addOutput:captureStillImageOutput];
-    }
+    
+    [captureSession commitConfiguration];
 }
 
 - (void)setupCaptureVideoDataOutput {
@@ -103,69 +104,42 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
                                               queue:dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL)];
     [[captureVideoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
     
-    if ([[SmileViewController sharedSession] canAddOutput:captureVideoDataOutput]) {
-        [[SmileViewController sharedSession] addOutput:captureVideoDataOutput];
-    }
-}
-
-- (void)setupCaptureVideoPreviewLayer {
-    NSError *error = nil;
-    
-    self.captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:[SmileViewController sharedSession]];
-    [self.captureVideoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [self.previewView.layer addSublayer:self.captureVideoPreviewLayer];
-    
-    [[SmileViewController sharedSession] startRunning];
-    
-    if (error) {
-        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Initialization error"
-                                                                           info:[error localizedDescription]
-                                                                        handler:nil]
-                           animated:YES
-                         completion:nil];
-    }
-}
-
-- (void)setupCaptureDevice {
-    for (AVCaptureDevice *captureDevice in [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if ([captureDevice position] == AVCaptureDevicePositionBack) {
-            [[self.captureVideoPreviewLayer session] beginConfiguration];
-            AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
-            
-            for (AVCaptureInput *oldInput in [[self.captureVideoPreviewLayer session] inputs]) {
-                [[self.captureVideoPreviewLayer session] removeInput:oldInput];
-            }
-            
-            [[self.captureVideoPreviewLayer session] addInput:input];
-            [[self.captureVideoPreviewLayer session] commitConfiguration];
-            break;
-        }
+    if ([self.captureVideoPreviewLayer.session canAddOutput:captureVideoDataOutput]) {
+        [self.captureVideoPreviewLayer.session addOutput:captureVideoDataOutput];
+    } else {
+        NSLog(@"Unable to add video data output.");
     }
 }
 
 - (IBAction)showFrontCamera:(id)sender {
-    AVCaptureDevice *frontCaptureDevice = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo][0];
-    AVCaptureDevice *backCaptureDevice = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo][1];
+    AVCaptureSession *captureSession = self.captureVideoPreviewLayer.session;
+    AVCaptureDeviceInput *deviceInput = captureSession.inputs[0];
+    AVCaptureDevice *captureDevice;
     
-    if (self.captureDevice.position == frontCaptureDevice.position) {
-        self.captureDevice = backCaptureDevice;
-    } else if (self.captureDevice.position == backCaptureDevice.position) {
-        self.captureDevice = frontCaptureDevice;
+    switch (deviceInput.device.position) {
+        case AVCaptureDevicePositionBack:
+            captureDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera
+                                                               mediaType:AVMediaTypeVideo
+                                                                position:AVCaptureDevicePositionFront];
+            break;
+        case AVCaptureDevicePositionFront:
+            captureDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera
+                                                               mediaType:AVMediaTypeVideo
+                                                                position:AVCaptureDevicePositionBack];
+            break;
+        case AVCaptureDevicePositionUnspecified:
+            
+            break;
+        default:
+            break;
     }
     
-    [self switchCaptureDevice];
-}
-
-- (void)switchCaptureDevice {
-    [[SmileViewController sharedSession] beginConfiguration];
-    AVCaptureDeviceInput *newInput = [AVCaptureDeviceInput deviceInputWithDevice:self.captureDevice error:nil];
     
-    for (AVCaptureInput *oldInput in [SmileViewController sharedSession].inputs) {
-        [[SmileViewController sharedSession] removeInput:oldInput];
-    }
-    
-    [[SmileViewController sharedSession] addInput:newInput];
-    [[SmileViewController sharedSession] commitConfiguration];
+    [captureSession beginConfiguration];
+    AVCaptureDeviceInput *newInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
+    [captureSession removeInput:deviceInput];
+    [captureSession addInput:newInput];
+    [captureSession commitConfiguration];
 }
 
 #pragma mark - Styling methods
