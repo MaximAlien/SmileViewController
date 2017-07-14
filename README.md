@@ -14,7 +14,7 @@ UIViewController that allows to detect smile in real time (AVFoundation and Core
 $ gem install cocoapods
 ```
 
-####Podfile
+## Podfile
 
 To integrate SmileViewController into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -33,12 +33,12 @@ Then, run the following command:
 $ pod install
 ```
 
-##Notes
+## Notes
 - Project uses AVFoundation Framework.
 - Application will work only on iOS 8 and higher. 
 - Application uses ARC.
 
-##Usage
+## Usage
 
 To use this view controller simply load it up from AppDelegate:
 ```objective-c
@@ -52,5 +52,5 @@ To use this view controller simply load it up from AppDelegate:
     return YES;
 }
 ```
-##Example
+## Example
 ![Screen1](https://raw.githubusercontent.com/MaximAlien/SmileViewController/master/resources/example.png)
