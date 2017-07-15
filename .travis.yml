@@ -5,12 +5,10 @@ osx_image: xcode8.2
 # xcode_scheme: SmileViewControllerDemo
 
 script:
-  xctool
+  xcodebuild clean build
+  -sdk iphonesimulator
   -project Demo/SmileViewControllerDemo.xcodeproj
   -scheme SmileViewControllerDemo
-  build
-  test
-  CODE_SIGN_IDENTITY=""
   CODE_SIGNING_REQUIRED=NO
 
 after_success:
