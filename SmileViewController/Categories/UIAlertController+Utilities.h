@@ -11,6 +11,6 @@
 
 + (UIAlertController *)alertControllerWithTitle:(NSString *)title
                                            info:(NSString *)info
-                                        handler:(void (^)())handler;
+                                        handler:(void (^)(void))handler;
 
 @end

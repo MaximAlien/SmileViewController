@@ -5,7 +5,9 @@
 //  Copyright © 2016 Maxim Makhun. All rights reserved.
 //
 
-@import Social;
+@import AVFoundation;
+
+@class CIDetector;
 
 #import "SmileViewController.h"
 
@@ -13,8 +15,6 @@
 #import "UIImage+Additions.h"
 #import "UIAlertController+Utilities.h"
 #import "CIFaceFeature+Helpers.h"
-
-static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCaptureStillImageIsCapturingStillImageContext";
 
 @interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
@@ -25,10 +25,9 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 @property(nonatomic, strong) CALayer *mouthLayer;
 @property(nonatomic, strong) CALayer *faceLayer;
 @property(nonatomic, weak) IBOutlet UIView *previewView;
+@property(nonatomic, weak) IBOutlet UIButton *retakePhotoButton;
+@property(nonatomic, weak) IBOutlet UIButton *showFrontCameraButton;
 
-- (IBAction)shareViaInstagram:(id)sender;
-- (IBAction)shareViaFacebook:(id)sender;
-- (IBAction)shareViaTwitter:(id)sender;
 - (IBAction)retakePhotoButtonPressed:(id)sender;
 - (IBAction)showFrontCamera:(id)sender;
 
@@ -44,7 +43,7 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
     [self setupCaptureVideoPreviewLayer];
     [self setupCaptureDevice];
     [self setupCaptureVideoDataOutput];
-    [self styleSharingButtons];
+    [self styleButtons];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -128,12 +127,9 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
                                                                 position:AVCaptureDevicePositionBack];
             break;
         case AVCaptureDevicePositionUnspecified:
-            
-            break;
         default:
             break;
     }
-    
     
     [captureSession beginConfiguration];
     AVCaptureDeviceInput *newInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:nil];
@@ -144,18 +140,14 @@ static const NSString *AVCaptureStillImageIsCapturingStillImageContext = @"AVCap
 
 #pragma mark - Styling methods
 
-- (void)styleSharingButtons {
+- (void)styleButtons {
     self.retakePhotoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.retakePhotoButton setTitle:@"Retake" forState:UIControlStateNormal];
+    [self.retakePhotoButton setImage:[UIImage imageNamed:@"retake_image"] forState:UIControlStateNormal];
+    [self.retakePhotoButton setTintColor:[UIColor whiteColor]];
     
-    self.shareViaTwitterButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.shareViaTwitterButton setTitle:@"Twitter" forState:UIControlStateNormal];
-    
-    self.shareViaFacebookButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.shareViaFacebookButton setTitle:@"Facebook" forState:UIControlStateNormal];
-    
-    self.shareViaInstagramButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.shareViaInstagramButton setTitle:@"Instagram" forState:UIControlStateNormal];
+    self.showFrontCameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.showFrontCameraButton setImage:[UIImage imageNamed:@"switch_camera_image"] forState:UIControlStateNormal];
+    [self.showFrontCameraButton setTintColor:[UIColor whiteColor]];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
@@ -180,6 +172,19 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyHigh, CIDetectorAccuracy, nil];
     CIDetector *faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
     NSArray *features = [faceDetector featuresInImage:ciImage options:imageOptions];
+    
+    if (features.count == 0) {
+        NSLog(@"No face features available.");
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self.rightEyeLayer removeFromSuperlayer];
+            [self.leftEyeLayer removeFromSuperlayer];
+            [self.mouthLayer removeFromSuperlayer];
+            [self.faceLayer removeFromSuperlayer];
+        });
+        
+        return;
+    }
     
     for (CIFaceFeature *faceFeature in features) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
@@ -262,8 +267,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                                             bounds.size.width,
                                             bounds.size.height / 3);
             
-            UIImage *glassesImage = [UIImage imageNamed:@"glasses"];
-            glassesLayer.contents = (id)glassesImage.CGImage;
+            glassesLayer.contents = (id)[UIImage imageNamed:@"glasses_image"].CGImage;
             glassesLayer.contentsGravity = kCAGravityResizeAspect;
             [self.faceLayer addSublayer:glassesLayer];
             
@@ -272,52 +276,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
 }
 
-#pragma mark - Photo sharing methods
-
 - (IBAction)retakePhotoButtonPressed:(id)sender {
     if (![self.captureVideoPreviewLayer session].isRunning) {
         self.takenPhotoImage = nil;
         [[self.captureVideoPreviewLayer session] startRunning];
-    }
-}
-
-- (IBAction)shareViaInstagram:(id)sender {
-    
-}
-
-- (IBAction)shareViaFacebook:(id)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        
-        UIImage *image = [UIImage resizeImage:self.takenPhotoImage toSize:CGSizeMake(640.0f, 480.0f)];
-        image = [UIImage rotateImage:image byDegrees:90.0f withSize:image.size];
-        [composeViewController addImage:image];
-        
-        [self presentViewController:composeViewController animated:YES completion:nil];
-    } else {
-        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Facebook is not available"
-                                                                           info:@"Make sure your device has an internet connection and you have at least one Facebook account added"
-                                                                        handler:nil]
-                           animated:YES
-                         completion:nil];
-    }
-}
-
-- (IBAction)shareViaTwitter:(id)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        
-        UIImage *image = [UIImage resizeImage:self.takenPhotoImage toSize:CGSizeMake(640.0f, 480.0f)];
-        image = [UIImage rotateImage:image byDegrees:90.0f withSize:image.size];
-        [composeViewController addImage:image];
-        
-        [self presentViewController:composeViewController animated:YES completion:nil];
-    } else {
-        [self presentViewController:[UIAlertController alertControllerWithTitle:@"Twitter is not available"
-                                                                           info:@"Make sure your device has an internet connection and you have at least one Twitter account added"
-                                                                        handler:nil]
-                           animated:YES
-                         completion:nil];
     }
 }
 

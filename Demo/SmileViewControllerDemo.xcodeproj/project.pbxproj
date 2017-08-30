@@ -142,6 +142,7 @@
 				TargetAttributes = {
 					6D0D71D41D897BE4006AAE6C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = P4RNZKZ54K;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -310,11 +311,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P4RNZKZ54K;
 				INFOPLIST_FILE = SmileViewControllerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -325,11 +326,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P4RNZKZ54K;
 				INFOPLIST_FILE = SmileViewControllerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
