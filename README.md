@@ -5,7 +5,7 @@ SmileViewController
 [![codecov](https://codecov.io/gh/MaximAlien/SmileViewController/branch/master/graph/badge.svg)](https://codecov.io/gh/MaximAlien/SmileViewController)
 [![CocoaPods](https://img.shields.io/cocoapods/v/SmileViewController.svg)](https://cocoapods.org/?q=name%3Asmileviewcontroller*)
 
-UIViewController that allows to detect smile in real time (AVFoundation and CoreImage). There are additional features like photo sharing (Facebook, Twitter). It's also possible to take new selfie by pressing re-take button.
+UIViewController that allows to detect smile in real time (AVFoundation, CoreImage). It's also possible to take new selfie by pressing re-take button.
 
 ## Installation with CocoaPods
 [CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like SmileViewController in your projects. You can install it with the following command:
