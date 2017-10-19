@@ -15,7 +15,6 @@
 		6D0D71F91D897CA2006AAE6C /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */; };
 		6D0D71FA1D897CA2006AAE6C /* SmileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F61D897CA2006AAE6C /* SmileViewController.m */; };
 		6D0D71FB1D897CA2006AAE6C /* SmileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */; };
-		6DC744BD1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DC744BC1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +32,6 @@
 		6D0D71F51D897CA2006AAE6C /* SmileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileViewController.h; sourceTree = "<group>"; };
 		6D0D71F61D897CA2006AAE6C /* SmileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileViewController.m; sourceTree = "<group>"; };
 		6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmileViewController.xib; sourceTree = "<group>"; };
-		6DC744BB1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIFaceFeature+Helpers.h"; sourceTree = "<group>"; };
-		6DC744BC1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIFaceFeature+Helpers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +102,6 @@
 				6D0D71F21D897CA2006AAE6C /* UIAlertController+Utilities.m */,
 				6D0D71F31D897CA2006AAE6C /* UIImage+Additions.h */,
 				6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */,
-				6DC744BB1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.h */,
-				6DC744BC1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -188,7 +183,6 @@
 				6D0D71DA1D897BE4006AAE6C /* main.m in Sources */,
 				6D0D71F81D897CA2006AAE6C /* UIAlertController+Utilities.m in Sources */,
 				6D0D71FA1D897CA2006AAE6C /* SmileViewController.m in Sources */,
-				6DC744BD1DA43C6F003BC6D8 /* CIFaceFeature+Helpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
