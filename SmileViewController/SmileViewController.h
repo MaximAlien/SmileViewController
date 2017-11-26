@@ -7,6 +7,14 @@
 
 @import UIKit;
 
+@protocol SmileViewControllerDelegate
+
+- (void)smileDetected:(UIImage *)imageWithSmile;
+
+@end
+
 @interface SmileViewController : UIViewController
+
+@property (nonatomic, assign) id<SmileViewControllerDelegate> delegate;
 
 @end

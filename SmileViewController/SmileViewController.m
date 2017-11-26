@@ -9,16 +9,15 @@
 
 @class CIDetector;
 
+// View Controllers
 #import "SmileViewController.h"
 
 // Categories
 #import "UIImage+Additions.h"
-#import "UIAlertController+Utilities.h"
 
 @interface SmileViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property(nonatomic, strong) AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
-@property(nonatomic, strong) UIImage *takenPhotoImage;
 @property(nonatomic, weak) IBOutlet UIView *previewView;
 @property(nonatomic, weak) IBOutlet UIButton *retakePhotoButton;
 @property(nonatomic, weak) IBOutlet UIButton *showFrontCameraButton;
@@ -39,6 +38,12 @@
     [self setupCaptureDevice];
     [self setupCaptureVideoDataOutput];
     [self styleButtons];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[self.captureVideoPreviewLayer session] startRunning];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -74,7 +79,7 @@
                                                                                      error:&error];
     
     if (error) {
-        NSLog(@"Error: %@", error);
+        NSLog(@"[%s] Error: %@", __FUNCTION__, error);
     }
     
     [captureSession beginConfiguration];
@@ -82,7 +87,7 @@
     if ([captureSession canAddInput:captureDeviceInput]) {
         [captureSession addInput:captureDeviceInput];
     } else {
-        NSLog(@"Unable to add new input.");
+        NSLog(@"[%s] Unable to add new input.", __FUNCTION__);
     }
     
     [captureSession commitConfiguration];
@@ -96,12 +101,13 @@
     [captureVideoDataOutput setAlwaysDiscardsLateVideoFrames:YES];
     [captureVideoDataOutput setSampleBufferDelegate:self
                                               queue:dispatch_queue_create("VideoDataOutputQueue", DISPATCH_QUEUE_SERIAL)];
-    [[captureVideoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
+    AVCaptureConnection *captureConnection = [captureVideoDataOutput connectionWithMediaType:AVMediaTypeVideo];
+    captureConnection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
     
     if ([self.captureVideoPreviewLayer.session canAddOutput:captureVideoDataOutput]) {
         [self.captureVideoPreviewLayer.session addOutput:captureVideoDataOutput];
     } else {
-        NSLog(@"Unable to add video data output.");
+        NSLog(@"[%s] Unable to add video data output.", __FUNCTION__);
     }
 }
 
@@ -110,11 +116,9 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
-    
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
     CIImage *ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer options:(__bridge NSDictionary *)attachments];
-    UIImage *uiImage = [UIImage imageFromSampleBuffer:sampleBuffer];
     
     if (attachments) {
         CFRelease(attachments);
@@ -130,19 +134,18 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CIDetector *faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:detectorOptions];
     NSArray *features = [faceDetector featuresInImage:ciImage options:imageOptions];
     
-    if (features.count == 0) {
-        NSLog(@"No face features available.");
-        return;
-    }
-    
-    for (CIFaceFeature *faceFeature in features) {
-        if (faceFeature.hasSmile) {
-            dispatch_async(dispatch_get_main_queue(), ^(void) {
-                UIImage *image = [[UIImage alloc] initWithCIImage:ciImage];
-                self.takenPhotoImage = image;
-            });
-            
-            [[self.captureVideoPreviewLayer session] stopRunning];
+    if (features.count != 0) {
+        NSLog(@"[%s] %lu face features available.", __FUNCTION__, features.count);
+        
+        for (CIFaceFeature *faceFeature in features) {
+            if (faceFeature.hasSmile) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    UIImage *image = [UIImage imageFromSampleBuffer:sampleBuffer];
+                    [self.delegate smileDetected:image];
+                });
+                
+                [[self.captureVideoPreviewLayer session] stopRunning];
+            }
         }
     }
 }
@@ -191,7 +194,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (IBAction)retakePhotoButtonPressed:(id)sender {
     if (![self.captureVideoPreviewLayer session].isRunning) {
-        self.takenPhotoImage = nil;
         [[self.captureVideoPreviewLayer session] startRunning];
     }
 }

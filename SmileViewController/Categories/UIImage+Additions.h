@@ -10,13 +10,6 @@
 
 @interface UIImage (Additions)
 
-+ (UIImage *)rotateImage:(UIImage *)image
-               byDegrees:(CGFloat)degrees
-                withSize:(CGSize)size;
-
-+ (UIImage *)resizeImage:(UIImage *)image
-                  toSize:(CGSize)size;
-
 + (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 @end

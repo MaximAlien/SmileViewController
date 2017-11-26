@@ -20,10 +20,10 @@ To integrate SmileViewController into your Xcode project using CocoaPods, specif
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '11.0'
 
 target 'TargetName' do
-pod 'SmileViewController', '~> 1.0.1'
+pod 'SmileViewController', '~> 1.0.2'
 end
 ```
 
@@ -48,4 +48,4 @@ To use this view controller simply load it up from AppDelegate:
 }
 ```
 ## Example
-![Screen1](https://raw.githubusercontent.com/MaximAlien/SmileViewController/master/resources/example.png)
+![Screen1](https://raw.githubusercontent.com/MaximAlien/SmileViewController/master/resources/example.gif)

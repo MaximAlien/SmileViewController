@@ -11,10 +11,11 @@
 		6D0D71DD1D897BE4006AAE6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71DC1D897BE4006AAE6C /* AppDelegate.m */; };
 		6D0D71E51D897BE4006AAE6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71E41D897BE4006AAE6C /* Assets.xcassets */; };
 		6D0D71E81D897BE4006AAE6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71E61D897BE4006AAE6C /* LaunchScreen.storyboard */; };
-		6D0D71F81D897CA2006AAE6C /* UIAlertController+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F21D897CA2006AAE6C /* UIAlertController+Utilities.m */; };
 		6D0D71F91D897CA2006AAE6C /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */; };
 		6D0D71FA1D897CA2006AAE6C /* SmileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F61D897CA2006AAE6C /* SmileViewController.m */; };
 		6D0D71FB1D897CA2006AAE6C /* SmileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */; };
+		6DE1C7451FCAF61D00B9C380 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE1C7431FCAF61D00B9C380 /* PreviewViewController.m */; };
+		6DE1C7461FCAF61D00B9C380 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE1C7441FCAF61D00B9C380 /* PreviewViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,13 +26,14 @@
 		6D0D71E41D897BE4006AAE6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D0D71E71D897BE4006AAE6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D0D71E91D897BE4006AAE6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D0D71F11D897CA2006AAE6C /* UIAlertController+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Utilities.h"; sourceTree = "<group>"; };
-		6D0D71F21D897CA2006AAE6C /* UIAlertController+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Utilities.m"; sourceTree = "<group>"; };
 		6D0D71F31D897CA2006AAE6C /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
 		6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		6D0D71F51D897CA2006AAE6C /* SmileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileViewController.h; sourceTree = "<group>"; };
 		6D0D71F61D897CA2006AAE6C /* SmileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileViewController.m; sourceTree = "<group>"; };
 		6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmileViewController.xib; sourceTree = "<group>"; };
+		6DE1C7421FCAF61D00B9C380 /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PreviewViewController.h; path = SmileViewControllerDemo/PreviewViewController.h; sourceTree = SOURCE_ROOT; };
+		6DE1C7431FCAF61D00B9C380 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PreviewViewController.m; path = SmileViewControllerDemo/PreviewViewController.m; sourceTree = SOURCE_ROOT; };
+		6DE1C7441FCAF61D00B9C380 /* PreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreviewViewController.xib; path = SmileViewControllerDemo/PreviewViewController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,9 @@
 				6D0D71F51D897CA2006AAE6C /* SmileViewController.h */,
 				6D0D71F61D897CA2006AAE6C /* SmileViewController.m */,
 				6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */,
+				6DE1C7421FCAF61D00B9C380 /* PreviewViewController.h */,
+				6DE1C7431FCAF61D00B9C380 /* PreviewViewController.m */,
+				6DE1C7441FCAF61D00B9C380 /* PreviewViewController.xib */,
 			);
 			name = SmileViewController;
 			path = ../SmileViewController;
@@ -98,8 +103,6 @@
 		6D0D71F01D897CA2006AAE6C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				6D0D71F11D897CA2006AAE6C /* UIAlertController+Utilities.h */,
-				6D0D71F21D897CA2006AAE6C /* UIAlertController+Utilities.m */,
 				6D0D71F31D897CA2006AAE6C /* UIImage+Additions.h */,
 				6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */,
 			);
@@ -168,6 +171,7 @@
 				6D0D71FB1D897CA2006AAE6C /* SmileViewController.xib in Resources */,
 				6D0D71E81D897BE4006AAE6C /* LaunchScreen.storyboard in Resources */,
 				6D0D71E51D897BE4006AAE6C /* Assets.xcassets in Resources */,
+				6DE1C7461FCAF61D00B9C380 /* PreviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,8 +184,8 @@
 			files = (
 				6D0D71DD1D897BE4006AAE6C /* AppDelegate.m in Sources */,
 				6D0D71F91D897CA2006AAE6C /* UIImage+Additions.m in Sources */,
+				6DE1C7451FCAF61D00B9C380 /* PreviewViewController.m in Sources */,
 				6D0D71DA1D897BE4006AAE6C /* main.m in Sources */,
-				6D0D71F81D897CA2006AAE6C /* UIAlertController+Utilities.m in Sources */,
 				6D0D71FA1D897CA2006AAE6C /* SmileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -292,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -309,7 +313,7 @@
 				INFOPLIST_FILE = SmileViewControllerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -324,7 +328,7 @@
 				INFOPLIST_FILE = SmileViewControllerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewControllerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
