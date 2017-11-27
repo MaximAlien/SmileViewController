@@ -1,0 +1,6 @@
+framework module SmileViewController {
+  umbrella header "SmileViewController.h"
+
+  export *
+  module * { export * }
+}

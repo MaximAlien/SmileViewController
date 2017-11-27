@@ -1,0 +1,46 @@
+BCSymbolMap Version: 2.0
++[UIImage(Additions) imageFromSampleBuffer:]
+Apple LLVM version 9.0.0 (clang-900.0.38)
+/Users/maximmakhun/Desktop/Open-source/Smile-Detector-CameraViewController/SmileViewController/Categories/UIImage+Additions.m
+/Users/maximmakhun/Desktop/Open-source/Smile-Detector-CameraViewController/Demo
+-[SmileViewController viewDidLoad]
+-[SmileViewController viewWillAppear:]
+-[SmileViewController prefersStatusBarHidden]
+-[SmileViewController viewDidLayoutSubviews]
+-[SmileViewController setupCaptureVideoPreviewLayer]
+-[SmileViewController setupCaptureDevice]
+-[SmileViewController setupCaptureVideoDataOutput]
+-[SmileViewController captureOutput:didOutputSampleBuffer:fromConnection:]
+___74-[SmileViewController captureOutput:didOutputSampleBuffer:fromConnection:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+-[SmileViewController styleButtons]
+-[SmileViewController showFrontCamera:]
+-[SmileViewController retakePhotoButtonPressed:]
+-[SmileViewController delegate]
+-[SmileViewController setDelegate:]
+-[SmileViewController captureVideoPreviewLayer]
+-[SmileViewController setCaptureVideoPreviewLayer:]
+-[SmileViewController previewView]
+-[SmileViewController setPreviewView:]
+-[SmileViewController retakePhotoButton]
+-[SmileViewController setRetakePhotoButton:]
+-[SmileViewController showFrontCameraButton]
+-[SmileViewController setShowFrontCameraButton:]
+-[SmileViewController .cxx_destruct]
+___block_descriptor_tmp
+_OBJC_IVAR_$_SmileViewController._delegate
+_OBJC_IVAR_$_SmileViewController._captureVideoPreviewLayer
+_OBJC_IVAR_$_SmileViewController._previewView
+_OBJC_IVAR_$_SmileViewController._retakePhotoButton
+_OBJC_IVAR_$_SmileViewController._showFrontCameraButton
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_AVCaptureVideoDataOutputSampleBufferDelegate
+l_OBJC_LABEL_PROTOCOL_$_AVCaptureVideoDataOutputSampleBufferDelegate
+/Users/maximmakhun/Desktop/Open-source/Smile-Detector-CameraViewController/SmileViewController/SmileViewController.m
+/Users/maximmakhun/Desktop/Open-source/Smile-Detector-CameraViewController/SmileViewController/SmileViewController.h
+__destroy_helper_block_
+__copy_helper_block_
+__74-[SmileViewController captureOutput:didOutputSampleBuffer:fromConnection:]_block_invoke
+/Users/maximmakhun/Library/Developer/Xcode/DerivedData/SmileViewControllerDemo-appgigahktmvmbegajloduydgpxn/Build/Intermediates.noindex/ArchiveIntermediates/SmileViewController/IntermediateBuildFilesPath/SmileViewControllerDemo.build/Release-iphoneos/SmileViewController.build/DerivedSources/SmileViewController_vers.c
