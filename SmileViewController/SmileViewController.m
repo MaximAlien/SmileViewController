@@ -154,11 +154,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void)styleButtons {
     self.retakePhotoButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.retakePhotoButton setImage:[UIImage imageNamed:@"retake_image"] forState:UIControlStateNormal];
+    UIImage *retakeImage = [UIImage imageNamed:@"retake_image" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+    [self.retakePhotoButton setImage:retakeImage forState:UIControlStateNormal];
     [self.retakePhotoButton setTintColor:[UIColor whiteColor]];
     
     self.showFrontCameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.showFrontCameraButton setImage:[UIImage imageNamed:@"switch_camera_image"] forState:UIControlStateNormal];
+    UIImage *switchCameraImage = [UIImage imageNamed:@"switch_camera_image" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+    [self.showFrontCameraButton setImage:switchCameraImage forState:UIControlStateNormal];
     [self.showFrontCameraButton setTintColor:[UIColor whiteColor]];
 }
 

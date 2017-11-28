@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6D7CC5FC1FCCBABA00CE35A1"
+               BlueprintIdentifier = "6DFCB60C1FCD951A004414A1"
                BuildableName = "SmileViewController.framework"
                BlueprintName = "SmileViewController"
                ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6D7CC5FC1FCCBABA00CE35A1"
+            BlueprintIdentifier = "6DFCB60C1FCD951A004414A1"
             BuildableName = "SmileViewController.framework"
             BlueprintName = "SmileViewController"
             ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
@@ -65,7 +65,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6D7CC5FC1FCCBABA00CE35A1"
+            BlueprintIdentifier = "6DFCB60C1FCD951A004414A1"
             BuildableName = "SmileViewController.framework"
             BlueprintName = "SmileViewController"
             ReferencedContainer = "container:SmileViewControllerDemo.xcodeproj">
