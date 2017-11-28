@@ -23,7 +23,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '11.0'
 
 target 'TargetName' do
-pod 'SmileViewController', '~> 1.0.7'
+pod 'SmileViewController', '~> 1.0.8'
 end
 ```
 
