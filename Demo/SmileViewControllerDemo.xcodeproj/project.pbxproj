@@ -14,31 +14,31 @@
 		6D0D71F91D897CA2006AAE6C /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */; };
 		6D0D71FA1D897CA2006AAE6C /* SmileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F61D897CA2006AAE6C /* SmileViewController.m */; };
 		6D0D71FB1D897CA2006AAE6C /* SmileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */; };
+		6DC318E11FCDA8FE002BE01D /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6DC318E01FCDA8FE002BE01D /* Resources.bundle */; };
+		6DC318EB1FCDADF9002BE01D /* SmileViewCtrlr.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DC318E91FCDADF9002BE01D /* SmileViewCtrlr.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DC318EE1FCDADF9002BE01D /* SmileViewCtrlr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC318E71FCDADF9002BE01D /* SmileViewCtrlr.framework */; };
+		6DC318EF1FCDADF9002BE01D /* SmileViewCtrlr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC318E71FCDADF9002BE01D /* SmileViewCtrlr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6DC318F31FCDAE3D002BE01D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7CC60F1FCCBBFB00CE35A1 /* AVFoundation.framework */; };
+		6DC318F41FCDAE43002BE01D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7CC6111FCCBC0A00CE35A1 /* CoreImage.framework */; };
+		6DC318F51FCDAE48002BE01D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFCB6251FCD9CDA004414A1 /* Foundation.framework */; };
+		6DC318F61FCDAE4D002BE01D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7CC6131FCCBC1500CE35A1 /* UIKit.framework */; };
+		6DC318F71FCDAE52002BE01D /* UIImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D0D71F31D897CA2006AAE6C /* UIImage+Additions.h */; };
+		6DC318F81FCDAE55002BE01D /* SmileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D0D71F51D897CA2006AAE6C /* SmileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DC318F91FCDAE9E002BE01D /* SmileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F61D897CA2006AAE6C /* SmileViewController.m */; };
+		6DC318FA1FCDAEA1002BE01D /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */; };
+		6DC318FB1FCDAEA7002BE01D /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6DC318E01FCDA8FE002BE01D /* Resources.bundle */; };
+		6DC318FC1FCDAEAA002BE01D /* SmileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */; };
 		6DE1C7451FCAF61D00B9C380 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE1C7431FCAF61D00B9C380 /* PreviewViewController.m */; };
 		6DE1C7461FCAF61D00B9C380 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DE1C7441FCAF61D00B9C380 /* PreviewViewController.xib */; };
-		6DFCB6071FCD8F29004414A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DFCB6061FCD8F29004414A1 /* Assets.xcassets */; };
-		6DFCB6111FCD951A004414A1 /* SmileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFCB60F1FCD951A004414A1 /* SmileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6DFCB6141FCD951A004414A1 /* SmileViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFCB60D1FCD951A004414A1 /* SmileViewController.framework */; };
-		6DFCB6151FCD951A004414A1 /* SmileViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFCB60D1FCD951A004414A1 /* SmileViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6DFCB6191FCD9535004414A1 /* SmileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F61D897CA2006AAE6C /* SmileViewController.m */; };
-		6DFCB61A1FCD9537004414A1 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D71F41D897CA2006AAE6C /* UIImage+Additions.m */; };
-		6DFCB61B1FCD9552004414A1 /* SmileViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D0D71F51D897CA2006AAE6C /* SmileViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6DFCB61C1FCD9563004414A1 /* UIImage+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D0D71F31D897CA2006AAE6C /* UIImage+Additions.h */; };
-		6DFCB61D1FCD9574004414A1 /* SmileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D0D71F71D897CA2006AAE6C /* SmileViewController.xib */; };
-		6DFCB61E1FCD9577004414A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DFCB6061FCD8F29004414A1 /* Assets.xcassets */; };
-		6DFCB6221FCD9CCC004414A1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7CC60F1FCCBBFB00CE35A1 /* AVFoundation.framework */; };
-		6DFCB6231FCD9CD1004414A1 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7CC6111FCCBC0A00CE35A1 /* CoreImage.framework */; };
-		6DFCB6241FCD9CD5004414A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7CC6131FCCBC1500CE35A1 /* UIKit.framework */; };
-		6DFCB6261FCD9CE0004414A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFCB6251FCD9CDA004414A1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6DFCB6121FCD951A004414A1 /* PBXContainerItemProxy */ = {
+		6DC318EC1FCDADF9002BE01D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6D0D71CD1D897BE4006AAE6C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6DFCB60C1FCD951A004414A1;
-			remoteInfo = SmileViewController;
+			remoteGlobalIDString = 6DC318E61FCDADF9002BE01D;
+			remoteInfo = SmileViewCtrlr;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,7 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6DFCB6151FCD951A004414A1 /* SmileViewController.framework in Embed Frameworks */,
+				6DC318EF1FCDADF9002BE01D /* SmileViewCtrlr.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,13 +72,13 @@
 		6D7CC60F1FCCBBFB00CE35A1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6D7CC6111FCCBC0A00CE35A1 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6D7CC6131FCCBC1500CE35A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6DC318E01FCDA8FE002BE01D /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		6DC318E71FCDADF9002BE01D /* SmileViewCtrlr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmileViewCtrlr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC318E91FCDADF9002BE01D /* SmileViewCtrlr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmileViewCtrlr.h; sourceTree = "<group>"; };
+		6DC318EA1FCDADF9002BE01D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DE1C7421FCAF61D00B9C380 /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PreviewViewController.h; path = SmileViewControllerDemo/PreviewViewController.h; sourceTree = SOURCE_ROOT; };
 		6DE1C7431FCAF61D00B9C380 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PreviewViewController.m; path = SmileViewControllerDemo/PreviewViewController.m; sourceTree = SOURCE_ROOT; };
 		6DE1C7441FCAF61D00B9C380 /* PreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PreviewViewController.xib; path = SmileViewControllerDemo/PreviewViewController.xib; sourceTree = SOURCE_ROOT; };
-		6DFCB6061FCD8F29004414A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		6DFCB60D1FCD951A004414A1 /* SmileViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmileViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DFCB60F1FCD951A004414A1 /* SmileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmileViewController.h; sourceTree = "<group>"; };
-		6DFCB6101FCD951A004414A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DFCB6251FCD9CDA004414A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -87,18 +87,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFCB6141FCD951A004414A1 /* SmileViewController.framework in Frameworks */,
+				6DC318EE1FCDADF9002BE01D /* SmileViewCtrlr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DFCB6091FCD951A004414A1 /* Frameworks */ = {
+		6DC318E31FCDADF9002BE01D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFCB6261FCD9CE0004414A1 /* Foundation.framework in Frameworks */,
-				6DFCB6241FCD9CD5004414A1 /* UIKit.framework in Frameworks */,
-				6DFCB6231FCD9CD1004414A1 /* CoreImage.framework in Frameworks */,
-				6DFCB6221FCD9CCC004414A1 /* AVFoundation.framework in Frameworks */,
+				6DC318F61FCDAE4D002BE01D /* UIKit.framework in Frameworks */,
+				6DC318F51FCDAE48002BE01D /* Foundation.framework in Frameworks */,
+				6DC318F41FCDAE43002BE01D /* CoreImage.framework in Frameworks */,
+				6DC318F31FCDAE3D002BE01D /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +110,7 @@
 			children = (
 				6D0D71EF1D897CA2006AAE6C /* SmileViewController */,
 				6D0D71D71D897BE4006AAE6C /* SmileViewControllerDemo */,
-				6DFCB60E1FCD951A004414A1 /* SmileViewController */,
+				6DC318E81FCDADF9002BE01D /* SmileViewCtrlr */,
 				6D0D71D61D897BE4006AAE6C /* Products */,
 				6D7CC60E1FCCBBFB00CE35A1 /* Frameworks */,
 			);
@@ -120,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				6D0D71D51D897BE4006AAE6C /* SmileViewControllerDemo.app */,
-				6DFCB60D1FCD951A004414A1 /* SmileViewController.framework */,
+				6DC318E71FCDADF9002BE01D /* SmileViewCtrlr.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,7 +156,7 @@
 				6DE1C7421FCAF61D00B9C380 /* PreviewViewController.h */,
 				6DE1C7431FCAF61D00B9C380 /* PreviewViewController.m */,
 				6DE1C7441FCAF61D00B9C380 /* PreviewViewController.xib */,
-				6DFCB6061FCD8F29004414A1 /* Assets.xcassets */,
+				6DC318E01FCDA8FE002BE01D /* Resources.bundle */,
 			);
 			name = SmileViewController;
 			path = ../SmileViewController;
@@ -182,25 +182,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6DFCB60E1FCD951A004414A1 /* SmileViewController */ = {
+		6DC318E81FCDADF9002BE01D /* SmileViewCtrlr */ = {
 			isa = PBXGroup;
 			children = (
-				6DFCB60F1FCD951A004414A1 /* SmileViewController.h */,
-				6DFCB6101FCD951A004414A1 /* Info.plist */,
+				6DC318E91FCDADF9002BE01D /* SmileViewCtrlr.h */,
+				6DC318EA1FCDADF9002BE01D /* Info.plist */,
 			);
-			path = SmileViewController;
+			path = SmileViewCtrlr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6DFCB60A1FCD951A004414A1 /* Headers */ = {
+		6DC318E41FCDADF9002BE01D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFCB6111FCD951A004414A1 /* SmileViewController.h in Headers */,
-				6DFCB61B1FCD9552004414A1 /* SmileViewController.h in Headers */,
-				6DFCB61C1FCD9563004414A1 /* UIImage+Additions.h in Headers */,
+				6DC318EB1FCDADF9002BE01D /* SmileViewCtrlr.h in Headers */,
+				6DC318F81FCDAE55002BE01D /* SmileViewController.h in Headers */,
+				6DC318F71FCDAE52002BE01D /* UIImage+Additions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,29 +219,29 @@
 			buildRules = (
 			);
 			dependencies = (
-				6DFCB6131FCD951A004414A1 /* PBXTargetDependency */,
+				6DC318ED1FCDADF9002BE01D /* PBXTargetDependency */,
 			);
 			name = SmileViewControllerDemo;
 			productName = SmileViewControllerDemo;
 			productReference = 6D0D71D51D897BE4006AAE6C /* SmileViewControllerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6DFCB60C1FCD951A004414A1 /* SmileViewController */ = {
+		6DC318E61FCDADF9002BE01D /* SmileViewCtrlr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6DFCB6161FCD951A004414A1 /* Build configuration list for PBXNativeTarget "SmileViewController" */;
+			buildConfigurationList = 6DC318F01FCDADF9002BE01D /* Build configuration list for PBXNativeTarget "SmileViewCtrlr" */;
 			buildPhases = (
-				6DFCB6081FCD951A004414A1 /* Sources */,
-				6DFCB6091FCD951A004414A1 /* Frameworks */,
-				6DFCB60A1FCD951A004414A1 /* Headers */,
-				6DFCB60B1FCD951A004414A1 /* Resources */,
+				6DC318E21FCDADF9002BE01D /* Sources */,
+				6DC318E31FCDADF9002BE01D /* Frameworks */,
+				6DC318E41FCDADF9002BE01D /* Headers */,
+				6DC318E51FCDADF9002BE01D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SmileViewController;
-			productName = SmileViewController;
-			productReference = 6DFCB60D1FCD951A004414A1 /* SmileViewController.framework */;
+			name = SmileViewCtrlr;
+			productName = SmileViewCtrlr;
+			productReference = 6DC318E71FCDADF9002BE01D /* SmileViewCtrlr.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -258,7 +258,7 @@
 						DevelopmentTeam = P4RNZKZ54K;
 						ProvisioningStyle = Automatic;
 					};
-					6DFCB60C1FCD951A004414A1 = {
+					6DC318E61FCDADF9002BE01D = {
 						CreatedOnToolsVersion = 9.1;
 						DevelopmentTeam = P4RNZKZ54K;
 						ProvisioningStyle = Automatic;
@@ -279,7 +279,7 @@
 			projectRoot = "";
 			targets = (
 				6D0D71D41D897BE4006AAE6C /* SmileViewControllerDemo */,
-				6DFCB60C1FCD951A004414A1 /* SmileViewController */,
+				6DC318E61FCDADF9002BE01D /* SmileViewCtrlr */,
 			);
 		};
 /* End PBXProject section */
@@ -289,20 +289,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DC318E11FCDA8FE002BE01D /* Resources.bundle in Resources */,
 				6D0D71FB1D897CA2006AAE6C /* SmileViewController.xib in Resources */,
 				6D0D71E81D897BE4006AAE6C /* LaunchScreen.storyboard in Resources */,
 				6D0D71E51D897BE4006AAE6C /* Assets.xcassets in Resources */,
 				6DE1C7461FCAF61D00B9C380 /* PreviewViewController.xib in Resources */,
-				6DFCB6071FCD8F29004414A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DFCB60B1FCD951A004414A1 /* Resources */ = {
+		6DC318E51FCDADF9002BE01D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFCB61E1FCD9577004414A1 /* Assets.xcassets in Resources */,
-				6DFCB61D1FCD9574004414A1 /* SmileViewController.xib in Resources */,
+				6DC318FC1FCDAEAA002BE01D /* SmileViewController.xib in Resources */,
+				6DC318FB1FCDAEA7002BE01D /* Resources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,22 +321,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DFCB6081FCD951A004414A1 /* Sources */ = {
+		6DC318E21FCDADF9002BE01D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFCB61A1FCD9537004414A1 /* UIImage+Additions.m in Sources */,
-				6DFCB6191FCD9535004414A1 /* SmileViewController.m in Sources */,
+				6DC318FA1FCDAEA1002BE01D /* UIImage+Additions.m in Sources */,
+				6DC318F91FCDAE9E002BE01D /* SmileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6DFCB6131FCD951A004414A1 /* PBXTargetDependency */ = {
+		6DC318ED1FCDADF9002BE01D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6DFCB60C1FCD951A004414A1 /* SmileViewController */;
-			targetProxy = 6DFCB6121FCD951A004414A1 /* PBXContainerItemProxy */;
+			target = 6DC318E61FCDADF9002BE01D /* SmileViewCtrlr */;
+			targetProxy = 6DC318EC1FCDADF9002BE01D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -484,7 +484,7 @@
 			};
 			name = Release;
 		};
-		6DFCB6171FCD951A004414A1 /* Debug */ = {
+		6DC318F11FCDADF9002BE01D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -501,11 +501,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = SmileViewController/Info.plist;
+				INFOPLIST_FILE = SmileViewCtrlr/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewCtrlr;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -514,7 +514,7 @@
 			};
 			name = Debug;
 		};
-		6DFCB6181FCD951A004414A1 /* Release */ = {
+		6DC318F21FCDADF9002BE01D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -531,11 +531,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = SmileViewController/Info.plist;
+				INFOPLIST_FILE = SmileViewCtrlr/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.SmileViewCtrlr;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -565,11 +565,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6DFCB6161FCD951A004414A1 /* Build configuration list for PBXNativeTarget "SmileViewController" */ = {
+		6DC318F01FCDADF9002BE01D /* Build configuration list for PBXNativeTarget "SmileViewCtrlr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6DFCB6171FCD951A004414A1 /* Debug */,
-				6DFCB6181FCD951A004414A1 /* Release */,
+				6DC318F11FCDADF9002BE01D /* Debug */,
+				6DC318F21FCDADF9002BE01D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
